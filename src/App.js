@@ -1,6 +1,7 @@
 import React, { useCallback, useRef, useState } from "react";
 import { Crossword, ThemeProvider } from "@jaredreisinger/react-crossword";
 import styled from "styled-components";
+import Clue from "./components/Clue/Clue";
 
 import "./App.css";
 
@@ -131,6 +132,9 @@ function App() {
 				"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
 			);
 			correctSound.play();
+			setTimeout(function () {
+				correctSound.stop();
+			}, 700);
 		},
 		[addMessage],
 	);
@@ -169,7 +173,7 @@ function App() {
 	);
 
 	return (
-		<div class="damsy">
+		<div class="content">
 			<Page>
 				<Header>SparkX Crossword</Header>
 
@@ -186,7 +190,7 @@ function App() {
 							columnBreakpoint: "9999px",
 							gridBackground: "transparent",
 							cellBackground: "transparent",
-							cellBorder: "#000",
+							cellBorder: "#fff",
 							textColor: "#fff",
 							numberColor: "#425",
 							focusBackground: "#b48",
@@ -198,6 +202,7 @@ function App() {
 						onCrosswordCorrect={onCrosswordCorrect}
 						onCellChange={onCellChange}
 					/>
+					<Clue />
 				</CrosswordWrapper>
 
 				{/* 
