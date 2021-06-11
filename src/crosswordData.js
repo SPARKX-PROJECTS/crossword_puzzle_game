@@ -190,3 +190,6 @@ const data_3 = {
 
 let header_array = ["POYA DAYS", "BUDDHA'S EARLY LIFE", "EIGHT SACRED PLACES IN ANURADHAPURA"];
 let data_array = [data_1, data_2, data_3];
+
+export { data_array };
+export { header_array };
