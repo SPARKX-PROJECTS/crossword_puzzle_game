@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Crossword } from "./Crossword";
+import Crossword from "./Crossword";
 import styled from "styled-components";
 import Clue from "./components/Clue/Clue";
 
@@ -8,55 +8,51 @@ import "./App.css";
 let correctSound;
 
 const data = {
-  across: {
-    1: {
-      clue: 'one plus one',
-      answer: 'TWO',
-      row: 0,
-      col: 0,
-    },  
-  },
+	across: {
+		1: {
+			clue: "one plus one",
+			answer: "TWO",
+			row: 0,
+			col: 0,
+		},
+	},
 
-  down: {
-    2: {
-      clue: 'three minus two',
-      answer: 'ONE',
-      row: 0,
-      col: 2,
-    },
-    1: {
-      clue: 'five plus five',
-      answer: 'TEN',
-      row: 0,
-      col: 0,
-    }, 
-  },
+	down: {
+		2: {
+			clue: "three minus two",
+			answer: "ONE",
+			row: 0,
+			col: 2,
+		},
+		1: {
+			clue: "five plus five",
+			answer: "TEN",
+			row: 0,
+			col: 0,
+		},
+	},
 };
 
 const Page = styled.div`
-  padding: 2em;
-  padding-top: 0rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  flex-wrap: nowrap;
-  background-repeat: no-repeat;
-
-  
+	padding: 2em;
+	padding-top: 0rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	flex-wrap: nowrap;
+	background-repeat: no-repeat;
 `;
 
 const Header = styled.h1`
-  text-align: center;
-  margin-bottom: 1em;
-  text-transform: uppercase;
-  font-family: ;
-  text-shadow: 0px 1px 0px rgba(255,255,255,.5)
+	text-align: center;
+	margin-bottom: 1em;
+	text-transform: uppercase;
+	font-family: ;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
 `;
 
-
 const Commands = styled.div`
-  text-align: center;
-  
+	text-align: center;
 `;
 
 const Command = styled.button`
@@ -78,7 +74,7 @@ const CrosswordWrapper = styled.div`
 			fill: rgb(100, 200, 100) !important;
 		}
 	}
-	.clue.correct{
+	.clue.correct {
 		::before {
 			content: "\u2713"; /* a.k.a. checkmark: ✓ */
 			display: inline-block;
@@ -91,10 +87,6 @@ const CrosswordWrapper = styled.div`
 	}
 `;
 
-Crossword = styled.pre`
-	background-image: url("../public/favicon.ico");
-	background-color: rgb(230, 230, 230);
-`;
 const Messages = styled.pre`
 	background-color: rgb(230, 230, 230);
 	margin: 1em 0;
