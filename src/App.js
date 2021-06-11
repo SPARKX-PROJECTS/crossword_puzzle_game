@@ -8,40 +8,56 @@ import "./App.css";
 let correctSound;
 
 const data = {
-	across: {
-		1: {
-			clue: "one plus one",
-			answer: "TWO",
-			row: 0,
-			col: 0,
-		},
-	},
+  across: {
+    1: {
+      clue: 'one plus one',
+      answer: 'TWO',
+      row: 0,
+      col: 0,
+    },  
+  },
 
-	down: {
-		2: {
-			clue: "three minus two",
-			answer: "ONE",
-			row: 0,
-			col: 2,
-		},
-		1: {
-			clue: "five plus five",
-			answer: "TENET",
-			row: 0,
-			col: 0,
-		},
-	},
+  down: {
+    2: {
+      clue: 'three minus two',
+      answer: 'ONE',
+      row: 0,
+      col: 2,
+    },
+    1: {
+      clue: 'five plus five',
+      answer: 'TEN',
+      row: 0,
+      col: 0,
+    }, 
+  },
 };
 
 const Page = styled.div`
-	padding: 2em;
+  padding: 2em;
+  padding-top: 0rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
+  background-repeat: no-repeat;
+
+  
 `;
 
 const Header = styled.h1`
-	margin-bottom: 1em;
+  text-align: center;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  font-family: ;
+  text-shadow: 0px 1px 0px rgba(255,255,255,.5)
 `;
 
-const Commands = styled.div``;
+
+const Commands = styled.div`
+  text-align: center;
+  
+`;
 
 const Command = styled.button`
 	margin-right: 1em;
@@ -62,7 +78,7 @@ const CrosswordWrapper = styled.div`
 			fill: rgb(100, 200, 100) !important;
 		}
 	}
-	.clue.correct {
+	.clue.correct{
 		::before {
 			content: "\u2713"; /* a.k.a. checkmark: ✓ */
 			display: inline-block;
