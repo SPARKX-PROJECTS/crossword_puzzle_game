@@ -18,7 +18,7 @@ export default function Cell({ cellData, onClick, focus, highlight }) {
     CrosswordSizeContext
   );
   const {
-    // gridBackground,
+    gridBackground,
     cellBackground,
     cellBorder,
     textColor,

@@ -182,7 +182,7 @@ function App() {
       <Page>
         <Header>SparkX Crossword</Header>
 
-        <p>CATEGORY : {header}</p>
+        <h3>CATEGORY : {header}</h3>
 
         <Commands>
           <Command onClick={focus}>Focus</Command>
