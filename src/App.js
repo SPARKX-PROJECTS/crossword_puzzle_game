@@ -36,12 +36,12 @@ const Commands = styled.div`
 
 const Command = styled.button`
   cursor: pointer;
-  background: transparent;
+  opacity:0.75;
   font-size: 16px;
   border-radius: 3px;
   color: #03c2fc;
   border: 2px solid #03c2fc;
-  margin: 0 1em;
+  margin: 1em;
   padding: 0.25em 1em;
   transition: 0.5s all ease-out;
  
@@ -54,7 +54,7 @@ const Command = styled.button`
 
 const CrosswordWrapper = styled.div`
   margin-top: 2em;
-  max-width: 30em;
+  max-width: 70em;
   /* and some fun making use of the defined class names */
   .crossword.correct {
     rect {
@@ -182,7 +182,7 @@ function App() {
       <Page>
         <Header>SparkX Crossword</Header>
 
-        <p>{header}</p>
+        <p>CATEGORY : {header}</p>
 
         <Commands>
           <Command onClick={focus}>Focus</Command>
@@ -197,8 +197,9 @@ function App() {
               cellBackground: "transparent",
               focusBackground: "transparent",
               highlightBackground: "transparent",
-              backgroundImage:
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_8IxqFD6Sw7Qsl3KcI0HkJdgb5j_qz1UYAg&usqp=CAU",
+            //   backgroundImage:
+            //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_8IxqFD6Sw7Qsl3KcI0HkJdgb5j_qz1UYAg&usqp=CAU",
+			backgroundImage: "https://digitalsynopsis.com/wp-content/uploads/2017/03/beautiful-color-gradients-backgrounds-078-cochiti-lake.png"
             }}
             ref={crossword}
             onCorrect={onCorrect}

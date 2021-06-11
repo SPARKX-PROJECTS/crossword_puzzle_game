@@ -166,7 +166,7 @@ const data_3 = {
       col: 6,
     },
     8: {
-        clue: "A stuoa built by king Vattagamini Abaya",
+        clue: "A stupa built by king Vattagamini Abaya",
         answer: "LANKARAMAYA",
         row: 16,
         col: 0,
