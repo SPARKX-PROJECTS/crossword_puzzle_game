@@ -25,6 +25,7 @@ export default function Cell({ cellData, onClick, focus, highlight }) {
     numberColor,
     focusBackground,
     highlightBackground,
+    backgroundImage,
   } = useContext(ThemeContext);
 
   const handleClick = useCallback(
@@ -47,6 +48,15 @@ export default function Cell({ cellData, onClick, focus, highlight }) {
       onClick={handleClick}
       style={{ cursor: 'default', fontSize: `${fontSize}px` }}
     >
+
+      {/*defintion for the image id*/ }
+
+      <defs>
+        <pattern id="pattern1" height="100%" width="100%" patternContentUnits="objectBoundingBox">
+            <image height="1" width="1" preserveAspectRatio="none" xlinkHref={backgroundImage} />
+        </pattern>
+      </defs>
+
       <rect
         x={x + cellPadding}
         y={y + cellPadding}
@@ -60,8 +70,19 @@ export default function Cell({ cellData, onClick, focus, highlight }) {
             : cellBackground
         }
         stroke={cellBorder}
+        style= {
+          {
+          fill:"url(#pattern1)",
+          opacity:0.7
+          }
+        }
         strokeWidth={cellSize / 50}
-      />
+      >
+         {/* <image xlinkHref="http://lorempixel.com/150/150/sports/"
+                        x="0" y="0"  height="16px" width="16px"/> */}
+      </rect>
+      
+
       {number && (
         <text
           x={x + cellPadding * 4}
@@ -111,4 +132,3 @@ Cell.defaultProps = {
   onClick: null,
 };
 
-// export default Cell;

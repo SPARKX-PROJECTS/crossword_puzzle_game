@@ -3,6 +3,7 @@ import Crossword from "./Crossword";
 import styled from "styled-components";
 import Clue from "./components/Clue/Clue";
 
+
 import "./App.css";
 
 let correctSound;
@@ -198,16 +199,14 @@ function App() {
 				<CrosswordWrapper>
 					<Crossword
 						data={data}
-						theme={{
-							columnBreakpoint: "9999px",
-							gridBackground: "transparent",
-							cellBackground: "transparent",
-							cellBorder: "#fff",
-							textColor: "#fff",
-							numberColor: "#425",
-							focusBackground: "#b48",
-							highlightBackground: "#aaa",
-						}}
+						theme={
+							{
+							cellBackground:"transparent",
+							focusBackground:"transparent",
+    					highlightBackground:"transparent",
+							backgroundImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_8IxqFD6Sw7Qsl3KcI0HkJdgb5j_qz1UYAg&usqp=CAU"
+							}
+						}
 						ref={crossword}
 						onCorrect={onCorrect}
 						onLoadedCorrect={onLoadedCorrect}

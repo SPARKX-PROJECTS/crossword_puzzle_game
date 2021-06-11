@@ -2,18 +2,18 @@
 import { Cell, CrosswordSizeContext, ThemeProvider } from "./Crossword.js";
 
 // as calculated in Crossword...
-const cellSize = 10;
+const cellSize = 20;
 const cellPadding = 0.125;
 const cellInner = cellSize - cellPadding * 2;
 const cellHalf = cellSize / 2;
 const fontSize = cellInner * 0.7;
 
 const themeContext = {
-	cellBackground: "rgb(255,255,255)",
-	cellBorder: "rgb(0,0,0)",
+	cellBackground: "rgb(0,0,0)",
+	cellBorder: "rgb(255,0,0)",
 	textColor: "rgb(0,0,0)",
 	numberColor: "rgba(0,0,0, 0.25)",
-	focusBackground: "rgb(255,255,0)",
+	focusBackground: "rgb(255,0,0)",
 	highlightBackground: "rgb(255,255,204)",
 };
 
