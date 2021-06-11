@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from "react";
-import { Crossword, ThemeProvider } from "@jaredreisinger/react-crossword";
+import { Crossword } from "./Crossword";
 import styled from "styled-components";
 import Clue from "./components/Clue/Clue";
 
@@ -75,6 +75,10 @@ const CrosswordWrapper = styled.div`
 	}
 `;
 
+Crossword = styled.pre`
+	background-image: url("../public/favicon.ico");
+	background-color: rgb(230, 230, 230);
+`;
 const Messages = styled.pre`
 	background-color: rgb(230, 230, 230);
 	margin: 1em 0;
