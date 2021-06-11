@@ -15,7 +15,6 @@ const themeContext = {
 	numberColor: "rgba(0,0,0, 0.25)",
 	focusBackground: "rgb(255,255,0)",
 	highlightBackground: "rgb(255,255,204)",
-	// backgroundImage: url("../src/static/images/cell_image.jpg "),
 };
 
 const sizeContext = {
