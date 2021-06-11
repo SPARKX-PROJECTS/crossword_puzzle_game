@@ -204,7 +204,7 @@ function App() {
 							cellBackground:"transparent",
 							focusBackground:"transparent",
     					highlightBackground:"transparent",
-							
+							backgroundImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_8IxqFD6Sw7Qsl3KcI0HkJdgb5j_qz1UYAg&usqp=CAU"
 							}
 						}
 						ref={crossword}

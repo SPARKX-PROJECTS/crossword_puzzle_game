@@ -15,7 +15,7 @@ const themeContext = {
 	numberColor: "rgba(0,0,0, 0.25)",
 	focusBackground: "rgb(255,0,0)",
 	highlightBackground: "rgb(255,255,204)",
-	backgroundImage: url( "https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png");
+	backgroundImage: url("https://winaero.com/blog/wp-content/uploads/2019/11/Photos-new-icon.png");
 };
 
 const sizeContext = {
