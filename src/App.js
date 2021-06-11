@@ -35,7 +35,21 @@ const Commands = styled.div`
 `;
 
 const Command = styled.button`
-  margin-right: 1em;
+  cursor: pointer;
+  background: transparent;
+  font-size: 16px;
+  border-radius: 3px;
+  color: #03c2fc;
+  border: 2px solid #03c2fc;
+  margin: 0 1em;
+  padding: 0.25em 1em;
+  transition: 0.5s all ease-out;
+ 
+  &:hover {
+    background-color: palevioletred;
+    color: white;
+  }
+  
 `;
 
 const CrosswordWrapper = styled.div`
