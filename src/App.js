@@ -4,34 +4,13 @@ import styled from "styled-components";
 import Clue from "./components/Clue/Clue";
 
 import "./App.css";
+import { data_array, header_array } from "./crosswordData";
 
 let correctSound;
 
-const data = {
-	across: {
-		1: {
-			clue: "one plus one",
-			answer: "TWO",
-			row: 0,
-			col: 0,
-		},
-	},
-
-	down: {
-		2: {
-			clue: "three minus two",
-			answer: "ONE",
-			row: 0,
-			col: 2,
-		},
-		1: {
-			clue: "five plus five",
-			answer: "TEN",
-			row: 0,
-			col: 0,
-		},
-	},
-};
+let number = Math.floor(Math.random() * data_array.length);
+const data = data_array[number];
+const header = header_array[number];
 
 const Page = styled.div`
 	padding: 2em;
@@ -56,12 +35,25 @@ const Commands = styled.div`
 `;
 
 const Command = styled.button`
-	margin-right: 1em;
+	cursor: pointer;
+	opacity: 0.75;
+	font-size: 16px;
+	border-radius: 3px;
+	color: #03c2fc;
+	border: 2px solid #03c2fc;
+	margin: 1em;
+	padding: 0.25em 1em;
+	transition: 0.5s all ease-out;
+
+	&:hover {
+		background-color: palevioletred;
+		color: white;
+	}
 `;
 
 const CrosswordWrapper = styled.div`
 	margin-top: 2em;
-	max-width: 30em;
+	max-width: 70em;
 	/* and some fun making use of the defined class names */
 	.crossword.correct {
 		rect {
@@ -187,38 +179,36 @@ function App() {
 	return (
 		<div class="content">
 			<Page>
-				<Header>
-					<h1 style={{ color: "white" }}>SparkX Crossword</h1>
-				</Header>
+				<Header>SparkX Crossword</Header>
+
+				<h3>CATEGORY : {header}</h3>
 
 				<Commands>
 					<Command onClick={focus}>Focus</Command>
 					<Command onClick={fillAllAnswers}>Fill all answers</Command>
 					<Command onClick={reset}>Reset</Command>
 				</Commands>
-				<div className="content">
-					<CrosswordWrapper>
-						<Crossword
-							data={data}
-							theme={{
-								cellBackground: "transparent",
-								cellBorder: "#ffffff",
-								textColor: "#aaaaff",
-								focusBackground: "#00ffff",
-								highlightBackground: "#00ffff",
-								backgroundImage:
-									"https://static.vecteezy.com/system/resources/previews/002/071/477/non_2x/abstract-blue-geometric-shape-overlay-layer-background-technology-style-vector.jpg",
-							}}
-							ref={crossword}
-							onCorrect={onCorrect}
-							onLoadedCorrect={onLoadedCorrect}
-							onCrosswordCorrect={onCrosswordCorrect}
-							onCellChange={onCellChange}
-						/>
-						<Clue />
-						<Clue />
-					</CrosswordWrapper>
-				</div>
+
+				<CrosswordWrapper>
+					<Crossword
+						data={data}
+						theme={{
+							cellBackground: "transparent",
+							focusBackground: "transparent",
+							highlightBackground: "transparent",
+							//   backgroundImage:
+							//     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_8IxqFD6Sw7Qsl3KcI0HkJdgb5j_qz1UYAg&usqp=CAU",
+							backgroundImage:
+								"https://digitalsynopsis.com/wp-content/uploads/2017/03/beautiful-color-gradients-backgrounds-078-cochiti-lake.png",
+						}}
+						ref={crossword}
+						onCorrect={onCorrect}
+						onLoadedCorrect={onLoadedCorrect}
+						onCrosswordCorrect={onCrosswordCorrect}
+						onCellChange={onCellChange}
+					/>
+					<Clue />
+				</CrosswordWrapper>
 
 				{/* 
         <Messages>{messages}</Messages> */}
