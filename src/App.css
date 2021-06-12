@@ -1,8 +1,10 @@
 .content {
-	/* background-image: url('https://i.pinimg.com/474x/70/0c/d1/700cd12e1dfca871c90683ffe22154ca.jpg'); */
-	/* background-image: url('https://cdn.hipwallpaper.com/i/22/29/Qd0Alw.jpg'); */
+	/* background-image: url("https://i.pinimg.com/474x/70/0c/d1/700cd12e1dfca871c90683ffe22154ca.jpg"); */
+	/* background-image: url("https://cdn.hipwallpaper.com/i/22/29/Qd0Alw.jpg"); */
 	display: flex;
 	justify-content: center;
-	background-image: url("https://cdn.idevie.com/wp-content/uploads/2016/01/37-affinity-game-background-600.jpg");
+	/* background-image: url("https://cdn.idevie.com/wp-content/uploads/2016/01/37-affinity-game-background-600.jpg"); */
+	/* background-image: url("https://www.teahub.io/photos/full/1-16878_night-sky-star-wallpaper-hd.jpg"); */
+	background-image: url("https://cdn.wallpapersafari.com/73/1/XjHiRy.jpg");
 	/* background-repeat: no-repeat; */
 }

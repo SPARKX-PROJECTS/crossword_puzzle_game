@@ -192,9 +192,10 @@ function App() {
 					>
 						SparkX Crossword
 					</h1>
+					<h3 style={{ color: "#aaaacc", fontSize: "27px" }}>
+						CATEGORY : {header}
+					</h3>
 				</Header>
-
-				<h3 style={{ color: "#000000" }}>CATEGORY : {header}</h3>
 
 				<Commands>
 					<Command onClick={focus}>Focus</Command>

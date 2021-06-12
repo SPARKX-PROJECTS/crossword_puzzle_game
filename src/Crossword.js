@@ -788,6 +788,7 @@ const Crossword = React.forwardRef(
 									height: "300px",
 									width: "350px",
 									padding: "50px",
+									color: "white",
 								}}
 							>
 								<CluesWrapper>
