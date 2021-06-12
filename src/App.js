@@ -4,7 +4,14 @@ import styled from "styled-components";
 import Clue from "./components/Clue/Clue";
 
 import "./App.css";
+
 import { data_array, header_array } from "./crosswordData";
+
+import { AwesomeButton } from "react-awesome-button";
+import "react-awesome-button/dist/styles.css";
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faReply, faVolumeDown, faVolumeMute, faVolumeOff, faVolumeUp} from '@fortawesome/free-solid-svg-icons'
 
 let correctSound;
 
@@ -22,34 +29,34 @@ const Page = styled.div`
 	background-repeat: no-repeat;
 `;
 
-const Header = styled.h1`
-	text-align: center;
-	margin-bottom: 1em;
-	text-transform: uppercase;
-	font-family: ;
-	text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.5);
-`;
+// const Header = styled.h1`
+// 	text-align: center;
+// 	margin-bottom: 1em;
+// 	text-transform: uppercase;
+// 	font-family: ;
+// 	font-size: 1rem;
+// `;
 
-const Commands = styled.div`
-	text-align: center;
-`;
+// const Commands = styled.div`
+// 	text-align: center;
+// `;
 
-const Command = styled.button`
-	cursor: pointer;
-	opacity: 0.75;
-	font-size: 16px;
-	border-radius: 3px;
-	color: #03c2fc;
-	border: 2px solid #03c2fc;
-	margin: 1em;
-	padding: 0.25em 1em;
-	transition: 0.5s all ease-out;
+// const Command = styled.button`
+// 	cursor: pointer;
+// 	opacity: 0.75;
+// 	font-size: 1rem;
+// 	border-radius: 3px;
+// 	color: #03c2fc;
+// 	border: 2px solid #03c2fc;
+// 	margin: 1em;
+// 	padding: 0.25em 1em;
+// 	transition: 0.5s all ease-out;
 
-	&:hover {
-		background-color: palevioletred;
-		color: white;
-	}
-`;
+// 	&:hover {
+// 		background-color: palevioletred;
+// 		color: white;
+// 	}
+// `;
 
 const CrosswordWrapper = styled.div`
 	margin-top: 2em;
@@ -108,9 +115,13 @@ function App() {
 	// something more interesting than simply collecting them as messages.
 	const [messages, setMessages] = useState([]);
 
+	const [soundOn, setSoundOn] = useState(true);
+
 	const addMessage = useCallback((message) => {
 		setMessages((m) => m.concat(`${message}\n`));
 	}, []);
+
+
 
 	function sound(src) {
 		this.sound = document.createElement("audio");
@@ -125,6 +136,15 @@ function App() {
 		this.stop = function () {
 			this.sound.pause();
 		};
+	}
+
+	const soundControl =  (event) => {
+		console.log( "clicked")
+		if( soundOn){
+			setSoundOn( false);
+		}else{
+			setSoundOn( true);
+		}
 	}
 
 	// onCorrect is called with the direction, number, and the correct answer.
@@ -179,29 +199,66 @@ function App() {
 	return (
 		<div class="content">
 			<Page>
-				<Header>
-					<h1
-						style={{
-							color: "#CEF0D4",
-							fontFamily: "Rouge Script, cursive",
-							fontSize: "50px",
-							fontWeight: "500",
-							fontStyle: "italic",
-							textAlign: "center",
-						}}
-					>
-						SparkX Crossword
-					</h1>
-					<h3 style={{ color: "#aaaacc", fontSize: "27px" }}>
+				<div className="div_game_category_title">
+
+						<AwesomeButton
+							size="icon"
+							ripple 
+							type="primary"
+						>
+							<FontAwesomeIcon icon={faReply}/>
+						</AwesomeButton>
+
+					<h3 className="game_category_title">
 						CATEGORY : {header}
 					</h3>
-				</Header>
 
-				<Commands>
-					<Command onClick={focus}>Focus</Command>
-					<Command onClick={fillAllAnswers}>Fill all answers</Command>
-					<Command onClick={reset}>Reset</Command>
-				</Commands>
+
+					<AwesomeButton
+							size="icon"
+							ripple 
+							type="primary"
+							onPress={soundControl}
+						>
+							{soundOn
+								?<FontAwesomeIcon icon={faVolumeMute}/> 
+								:<FontAwesomeIcon icon={faVolumeUp} />
+							}
+							
+					</AwesomeButton>
+
+				</div>
+
+
+				<div className="div_game_button_panel">
+
+						<AwesomeButton
+							ripple 
+							type="secondary"
+							onPress={focus}
+						>
+								Focus
+						</AwesomeButton>
+
+						<AwesomeButton
+							ripple 
+							type="secondary"
+							onPress={reset}	
+						>
+							
+								Reset
+						</AwesomeButton>
+
+						<AwesomeButton
+							ripple 
+							type="secondary"
+							onPress={fillAllAnswers}	
+						>
+								Fill Answers
+						</AwesomeButton>
+
+				</div>
+
 				<div>
 					<CrosswordWrapper>
 						<Crossword

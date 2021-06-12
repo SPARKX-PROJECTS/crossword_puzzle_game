@@ -741,12 +741,12 @@ const Crossword = React.forwardRef(
 
             {/*changed the div scrolling to a smooth viewport by adding a third party library 
             - react-zoom-pan-pinch - // check npm for more info */}
-            
+
             <TransformWrapper
-              defaultScale={1.1}
+              defaultScale={1.2}
               defaultPositionX={200}
               defaultPositionY={500}
-              maxScale={1.3}
+              maxScale={1.4}
               minScale={1}
             >
               <TransformComponent>
@@ -820,10 +820,13 @@ const Crossword = React.forwardRef(
 								style={{
 									overflow: "auto",
 									height: "30vw",
-									width: "30vw",
 									padding: "20px",
-									color: "white",
+									color: "black",
 									margin: "auto",
+                  backgroundColor: "rgba(255, 255, 255, .55)",
+                  backgroundFilter: "blur(10px)",
+                  marginTop: "0.7rem",
+                  border: "5px solid #1e88e5"
 								}}
 							>
 
