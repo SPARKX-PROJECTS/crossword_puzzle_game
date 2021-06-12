@@ -179,9 +179,22 @@ function App() {
 	return (
 		<div class="content">
 			<Page>
-				<Header>SparkX Crossword</Header>
+				<Header>
+					<h1
+						style={{
+							color: "#CEF0D4",
+							fontFamily: "Rouge Script, cursive",
+							fontSize: "50px",
+							fontWeight: "500",
+							fontStyle: "italic",
+							textAlign: "center",
+						}}
+					>
+						SparkX Crossword
+					</h1>
+				</Header>
 
-				<h3>CATEGORY : {header}</h3>
+				<h3 style={{ color: "#000000" }}>CATEGORY : {header}</h3>
 
 				<Commands>
 					<Command onClick={focus}>Focus</Command>
@@ -207,7 +220,7 @@ function App() {
 						onCrosswordCorrect={onCrosswordCorrect}
 						onCellChange={onCellChange}
 					/>
-					<Clue />
+					{/* <Clue /> */}
 				</CrosswordWrapper>
 
 				{/* 
