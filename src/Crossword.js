@@ -783,7 +783,12 @@ const Crossword = React.forwardRef(
 								</div>
 							</GridWrapper>
 							<div
-								style={{ overflow: "auto", height: "300px", width: "250px" }}
+								style={{
+									overflow: "auto",
+									height: "300px",
+									width: "350px",
+									padding: "50px",
+								}}
 							>
 								<CluesWrapper>
 									{clues &&
