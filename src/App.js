@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState } from "react";
 import Crossword from "./Crossword";
 import styled from "styled-components";
-import Clue from "./components/Clue/Clue";
 
 import "./App.css";
 
@@ -12,6 +11,7 @@ import "react-awesome-button/dist/styles.css";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faReply, faVolumeDown, faVolumeMute, faVolumeOff, faVolumeUp} from '@fortawesome/free-solid-svg-icons'
+import GameStartScreen from "./startscreen/GameStartScreen";
 
 let correctSound;
 
@@ -94,8 +94,7 @@ const Messages = styled.pre`
 
 // in order to make this a more-comprehensive example, and to vet Crossword's
 // features, we actually implement a fair amount...
-
-function App() {
+function App( {setGameStart}) {
 	const crossword = useRef();
 
 	const focus = useCallback((event) => {
@@ -114,8 +113,6 @@ function App() {
 	// but we can at least show that they are happening.  You would want to do
 	// something more interesting than simply collecting them as messages.
 	const [messages, setMessages] = useState([]);
-
-	const [soundOn, setSoundOn] = useState(true);
 
 	const addMessage = useCallback((message) => {
 		setMessages((m) => m.concat(`${message}\n`));
@@ -136,15 +133,6 @@ function App() {
 		this.stop = function () {
 			this.sound.pause();
 		};
-	}
-
-	const soundControl =  (event) => {
-		console.log( "clicked")
-		if( soundOn){
-			setSoundOn( false);
-		}else{
-			setSoundOn( true);
-		}
 	}
 
 	// onCorrect is called with the direction, number, and the correct answer.
@@ -196,6 +184,11 @@ function App() {
 		[addMessage],
 	);
 
+	const goBack = ()=> {
+		setGameStart( false);
+	}
+
+
 	return (
 		<div class="content">
 			<Page>
@@ -205,6 +198,7 @@ function App() {
 							size="icon"
 							ripple 
 							type="primary"
+							onPress={ goBack}
 						>
 							<FontAwesomeIcon icon={faReply}/>
 						</AwesomeButton>
@@ -212,20 +206,6 @@ function App() {
 					<h3 className="game_category_title">
 						CATEGORY : {header}
 					</h3>
-
-
-					<AwesomeButton
-							size="icon"
-							ripple 
-							type="primary"
-							onPress={soundControl}
-						>
-							{soundOn
-								?<FontAwesomeIcon icon={faVolumeMute}/> 
-								:<FontAwesomeIcon icon={faVolumeUp} />
-							}
-							
-					</AwesomeButton>
 
 				</div>
 
