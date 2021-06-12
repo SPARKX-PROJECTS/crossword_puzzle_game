@@ -6,5 +6,7 @@
 	/* background-image: url("https://cdn.idevie.com/wp-content/uploads/2016/01/37-affinity-game-background-600.jpg"); */
 	/* background-image: url("https://www.teahub.io/photos/full/1-16878_night-sky-star-wallpaper-hd.jpg"); */
 	background-image: url("https://cdn.wallpapersafari.com/73/1/XjHiRy.jpg");
-	/* background-repeat: no-repeat; */
+	background-size: cover;
+	background-position: relative;
+	background-repeat: no-repeat;
 }
