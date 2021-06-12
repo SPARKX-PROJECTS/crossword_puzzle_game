@@ -3,7 +3,6 @@ import Crossword from "./Crossword";
 import styled from "styled-components";
 import Clue from "./components/Clue/Clue";
 
-
 import "./App.css";
 
 let correctSound;
@@ -188,33 +187,38 @@ function App() {
 	return (
 		<div class="content">
 			<Page>
-				<Header>SparkX Crossword</Header>
+				<Header>
+					<h1 style={{ color: "white" }}>SparkX Crossword</h1>
+				</Header>
 
 				<Commands>
 					<Command onClick={focus}>Focus</Command>
 					<Command onClick={fillAllAnswers}>Fill all answers</Command>
 					<Command onClick={reset}>Reset</Command>
 				</Commands>
-
-				<CrosswordWrapper>
-					<Crossword
-						data={data}
-						theme={
-							{
-							cellBackground:"transparent",
-							focusBackground:"transparent",
-    					highlightBackground:"transparent",
-							backgroundImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_8IxqFD6Sw7Qsl3KcI0HkJdgb5j_qz1UYAg&usqp=CAU"
-							}
-						}
-						ref={crossword}
-						onCorrect={onCorrect}
-						onLoadedCorrect={onLoadedCorrect}
-						onCrosswordCorrect={onCrosswordCorrect}
-						onCellChange={onCellChange}
-					/>
-					<Clue />
-				</CrosswordWrapper>
+				<div className="content">
+					<CrosswordWrapper>
+						<Crossword
+							data={data}
+							theme={{
+								cellBackground: "transparent",
+								cellBorder: "#ffffff",
+								textColor: "#aaaaff",
+								focusBackground: "#00ffff",
+								highlightBackground: "#00ffff",
+								backgroundImage:
+									"https://static.vecteezy.com/system/resources/previews/002/071/477/non_2x/abstract-blue-geometric-shape-overlay-layer-background-technology-style-vector.jpg",
+							}}
+							ref={crossword}
+							onCorrect={onCorrect}
+							onLoadedCorrect={onLoadedCorrect}
+							onCrosswordCorrect={onCrosswordCorrect}
+							onCellChange={onCellChange}
+						/>
+						<Clue />
+						<Clue />
+					</CrosswordWrapper>
+				</div>
 
 				{/* 
         <Messages>{messages}</Messages> */}
