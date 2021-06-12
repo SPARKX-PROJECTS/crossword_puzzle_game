@@ -26,6 +26,7 @@ import {
 } from "./util";
 
 import { CrosswordContext, CrosswordSizeContext } from "./context";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 // TODO: make this a component property!
 const defaultStorageKey = "guesses";
@@ -727,7 +728,8 @@ const Crossword = React.forwardRef(
 					value={{ cellSize, cellPadding, cellInner, cellHalf, fontSize }}
 				>
 					<ThemeProvider theme={finalTheme}>
-						<div
+
+						{/* <div
 							style={{
 								overflowY: "scroll",
 								overflowX: "scroll",
@@ -735,7 +737,20 @@ const Crossword = React.forwardRef(
 								height: "35vw",
 								padding: "20px",
 							}}
-						>
+						> */}
+
+            {/*changed the div scrolling to a smooth viewport by adding a third party library 
+            - react-zoom-pan-pinch - // check npm for more info */}
+            
+            <TransformWrapper
+              defaultScale={1.1}
+              defaultPositionX={200}
+              defaultPositionY={500}
+              maxScale={1.3}
+              minScale={1}
+            >
+              <TransformComponent>
+
 							<OuterWrapper correct={crosswordCorrect}>
 								<GridWrapper>
 									{/*
@@ -790,9 +805,16 @@ const Crossword = React.forwardRef(
 											}}
 										/>
 									</div>
+
 								</GridWrapper>
 							</OuterWrapper>
-						</div>
+
+              </TransformComponent>
+            </TransformWrapper>
+
+						{/* </div> */}
+
+
 						<div>
 							<div
 								style={{
@@ -804,6 +826,7 @@ const Crossword = React.forwardRef(
 									margin: "auto",
 								}}
 							>
+
 								<CluesWrapper>
 									{clues &&
 										bothDirections.map((direction) => (
@@ -814,8 +837,11 @@ const Crossword = React.forwardRef(
 											/>
 										))}
 								</CluesWrapper>
+
 							</div>
 						</div>
+
+
 					</ThemeProvider>
 				</CrosswordSizeContext.Provider>
 			</CrosswordContext.Provider>
