@@ -247,8 +247,6 @@ function App( {setGameStart}) {
 								cellBackground: "transparent",
 								focusBackground: "transparent",
 								highlightBackground: "transparent",
-								//   backgroundImage:
-								//     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_8IxqFD6Sw7Qsl3KcI0HkJdgb5j_qz1UYAg&usqp=CAU",
 								backgroundImage:
 									"https://digitalsynopsis.com/wp-content/uploads/2017/03/beautiful-color-gradients-backgrounds-078-cochiti-lake.png",
 							}}

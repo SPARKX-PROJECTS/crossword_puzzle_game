@@ -188,8 +188,45 @@ const data_3 = {
   },
 };
 
-let header_array = ["POYA DAYS", "BUDDHA'S EARLY LIFE", "EIGHT SACRED PLACES IN ANURADHAPURA"];
-let data_array = [data_1, data_2, data_3];
+const data_4 = {
+  across: {
+    2: {
+      clue: "The place where the first arrival Buddhism happened in Sri Lanaka",
+      answer: "MIHINTHALAWA",
+      row: 2,
+      col: 2,
+    },
+    3: {
+      clue: "______ King ruled Sri lanka, when buddhism was introduced",
+      answer: "DEVANAMPIYATISSA",
+      row: 4,
+      col: 0,
+    },
+  },
+  down: {
+    1: {
+      clue: "_______ Maha Rahath Thero introduced Buddhism to Sri Lanka",
+      answer: "MIHINDU",
+      row: 0,
+      col: 4,
+    },
+    4: {
+      clue: "On this Poya day, arrival of buddhism in Sri Lanka Happened",
+      answer: "POSON",
+      row: 4,
+      col: 7,
+    },
+    5: {
+      clue: "Who was the emperor in India, took initiatives to send buddhism to Sri Lanka",
+      answer: "ASHOKA",
+      row: 4,
+      col: 10,
+    },
+  },
+};
+
+let header_array = ["POYA DAYS", "BUDDHA'S EARLY LIFE", "EIGHT SACRED PLACES IN ANURADHAPURA","Arrival of Buddhism in Sri Lanka"];
+let data_array = [data_1, data_2, data_3, data_4];
 
 export { data_array };
 export { header_array };
