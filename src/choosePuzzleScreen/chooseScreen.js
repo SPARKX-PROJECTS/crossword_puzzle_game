@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./chooseScreen.css";
 import  App from "../App";
-import { header_array } from "../crosswordData";
+import { puzzleDataStore } from "../crosswordData";
 
 import {
   faReply,
@@ -45,7 +45,7 @@ function ChooseScreen( { setScreenState, setPuzzleId}) {
             </AwesomeButton>
 
             <table>
-              { header_array.map( puzzle => (
+              { puzzleDataStore.map( puzzle => (
 
                 <tr>
                   <td className="mainButtons">

@@ -1,13 +1,3 @@
-//change the dataStore
-
-const dataStore = {
-  //puzzle number
-  //puzzle name
-  //data
-  //completed
-  //time to complete
-}
-
 const data_1 = {
   across: {
     1: {
@@ -235,27 +225,35 @@ const data_4 = {
   },
 };
 
-let header_array = [
+let puzzleDataStore = [
+  {
+    key:0,
+    name: "POYA DAYS",  
+    data: data_1,
+    completed: false,
+    time:""
+  },
   {
     key:1,
-    name: "POYA DAYS"  
+    name: "BUDDHA'S EARLY LIFE",
+    data: data_2,
+    completed: false,
+    time:"" 
   },
   {
     key:2,
-    name: "BUDDHA'S EARLY LIFE", 
+    name: "EIGHT SACRED PLACES IN ANURADHAPURA",
+    data: data_3,
+    completed: false,
+    time:""
   },
   {
     key:3,
-    name: "EIGHT SACRED PLACES IN ANURADHAPURA",
-  },
-  {
-    key:4,
-    name: "Arrival of Buddhism in Sri Lanka",  
+    name: "Arrival of Buddhism in Sri Lanka",
+    data: data_4,
+    completed: false,
+    time:""  
   }
 ];
 
-
-let data_array = [data_1, data_2, data_3, data_4];
-
-export { data_array };
-export { header_array };
+export { puzzleDataStore };

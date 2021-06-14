@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 import "./App.css";
 
-import { data_array, header_array } from "./crosswordData";
+import { puzzleDataStore } from "./crosswordData";
 
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
@@ -23,11 +23,6 @@ let correctSound = new sound("http://localhost:3000/audio/correct.mp3");
 let resetSound = new sound("http://localhost:3000/audio/reset.wav");
 let focusSound = new sound("http://localhost:3000/audio/focus.wav");
 let allCorrectSounnd = new sound("http://localhost:3000/audio/complete.wav");
-
-
-let number = Math.floor(Math.random() * data_array.length);
-const data = data_array[number];
-// const header = header_array[number];
 
 const Page = styled.div`
   padding: 2em;
@@ -202,7 +197,7 @@ function App({ puzzleId, setScreenState}) {
         <div>
           <CrosswordWrapper>
             <Crossword
-              data={data}
+              data={ puzzleDataStore[puzzleId].data}
               theme={{
                 cellBackground: "transparent",
                 focusBackground: "transparent",
