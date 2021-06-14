@@ -37,32 +37,27 @@ function ChooseScreen( { setScreenState, setPuzzleId}) {
   
   return (
       
-      <div className="div_main_start_screen">
-        <div className="div_main_button_set">
+      <div className="div_main_choose_screen">
+        <AwesomeButton size="icon" ripple type="primary" onPress={ goBack}>
+          <FontAwesomeIcon icon={ faReply} />
+        </AwesomeButton>
 
-            <AwesomeButton size="icon" ripple type="primary" onPress={ goBack}>
-              <FontAwesomeIcon icon={ faReply} />
-            </AwesomeButton>
+        <div className="div_choose_button_set">
 
-            <table>
               { puzzleDataStore.map( puzzle => (
+                <div className="div_puzzle_card">
+                  <AwesomeButton
+                    key={ puzzle.key}
+                    size="small"
+                    type="secondary"
+                    onPress={e =>  choosePuzzle( e, puzzle.key)}
+                  >
+                      { puzzle.key +1}
+                  </AwesomeButton>
 
-                <tr>
-                  <td className="mainButtons">
-                    <AwesomeButton
-                      key={ puzzle.key}
-                      size="large"
-                      type="secondary"
-                      onPress={e =>  choosePuzzle( e, puzzle.key)}
-                    >
-                        { puzzle.name}
-                    </AwesomeButton>
-                  </td>
-                </tr>
-
+                  <h6 className="puzzle_name">{ puzzle.name}</h6>
+                </div>
               ))}
-
-            </table>
       </div>
     </div>
                       

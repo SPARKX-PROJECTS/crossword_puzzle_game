@@ -181,7 +181,7 @@ function App({ puzzleId, setScreenState}) {
         <div className="div_game_button_panel">
 
           <AwesomeButton ripple type="secondary" onPress={focus}>
-            Focus {puzzleId}
+            Focus 
           </AwesomeButton>
 
           <AwesomeButton ripple type="secondary" onPress={reset}>

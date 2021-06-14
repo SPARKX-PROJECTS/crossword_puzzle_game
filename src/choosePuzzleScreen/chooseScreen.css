@@ -1,27 +1,36 @@
-.div_choose_screen {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    align-items: center;
-    height: 95vh;
-    box-sizing: border-box;
-    padding: 2rem;
-    background-image: url("https://i.gifer.com/4J5B.gif");
-    background-color:aqua;
-  }
-  
-  .div_choose_button_set {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    height: 40vh;
-    /* margin-top: 2rem; */
-    padding-top: 5rem;
-    justify-content: space-around;
-  }
-  
-  .mainButtons{
-    padding-bottom: 2em;
-  }
-  
- 
+.div_main_choose_screen {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  height: 95vh;
+  box-sizing: border-box;
+  padding: 2rem;
+  background-image: url('https://i.gifer.com/4J5B.gif');
+  background-color: aqua;
+}
+
+.div_choose_button_set {
+  display: flex;
+  flex-wrap: wrap;
+  height: 40vh;
+  /* margin-top: 2rem; */
+  padding: 2rem;
+  padding-top: 5rem;
+  justify-content: space-around;
+}
+
+.mainButtons {
+  padding-bottom: 2em;
+}
+
+.puzzle_name {
+  width: inherit;
+}
+
+.div_puzzle_card {
+  box-sizing: border-box;
+  width: 20vw;
+  margin: 1rem;
+  text-align: center;
+}
