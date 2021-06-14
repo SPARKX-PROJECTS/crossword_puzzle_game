@@ -27,7 +27,7 @@ let allCorrectSounnd = new sound("http://localhost:3000/audio/complete.wav");
 
 let number = Math.floor(Math.random() * data_array.length);
 const data = data_array[number];
-const header = header_array[number];
+// const header = header_array[number];
 
 const Page = styled.div`
   padding: 2em;
@@ -45,20 +45,14 @@ const CrosswordWrapper = styled.div`
   /* and some fun making use of the defined class names */
   .crossword.correct {
     rect {
-      stroke: rgb(0, 0, 0) !important;
+      stroke: rgb(0,0,0) !important;
     }
     svg > rect {
-<<<<<<< HEAD
-      
+      fill: rgb(0,0,0)!important;
     }
     text {
       fill: rgb(0,0,0) !important;
-=======
       fill: transparent !important;
-    }
-    text {
-      fill: rgb(0, 0, 0) !important;
->>>>>>> 0d66cf3a73ecebd7c29758ac9ebbadf98225dcc8
     }
   }
   .clue.correct {
@@ -95,9 +89,10 @@ function sound(src) {
     };
   }
 
+
 // in order to make this a more-comprehensive example, and to vet Crossword's
 // features, we actually implement a fair amount...
-function App({ setGameStart }) {
+function App({ puzzleId, setScreenState}) {
   const crossword = useRef();
 
   const focus = useCallback((event) => {
@@ -158,10 +153,8 @@ function App({ setGameStart }) {
   const onCrosswordCorrect = useCallback(
     (isCorrect) => {
       addMessage(`onCrosswordCorrect: ${JSON.stringify(isCorrect)}`);
-	  allCorrectSounnd.play();
-    
+      allCorrectSounnd.play();
     },
-	
     [addMessage]
   );
 
@@ -174,23 +167,26 @@ function App({ setGameStart }) {
   );
 
   const goBack = () => {
-    setGameStart(false);
+    setScreenState( "CHOOSE_SCREEN");
+    
   };
 
   return (
     <div class="content">
       <Page>
         <div className="div_game_category_title">
-          <AwesomeButton size="icon" ripple type="primary" onPress={goBack}>
-            <FontAwesomeIcon icon={faReply} />
+
+          <AwesomeButton size="icon" ripple type="primary" onPress={ goBack}>
+            <FontAwesomeIcon icon={ faReply} />
           </AwesomeButton>
 
-          <h3 className="game_category_title">CATEGORY : {header}</h3>
+          {/* <h3 className="game_category_title">CATEGORY : {header}</h3> */}
         </div>
 
         <div className="div_game_button_panel">
+
           <AwesomeButton ripple type="secondary" onPress={focus}>
-            Focus
+            Focus {puzzleId}
           </AwesomeButton>
 
           <AwesomeButton ripple type="secondary" onPress={reset}>
@@ -200,6 +196,7 @@ function App({ setGameStart }) {
           <AwesomeButton ripple type="secondary" onPress={fillAllAnswers}>
             Fill Answers
           </AwesomeButton>
+
         </div>
 
         <div>

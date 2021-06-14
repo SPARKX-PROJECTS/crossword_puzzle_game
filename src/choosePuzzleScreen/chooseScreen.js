@@ -11,71 +11,61 @@ import "react-awesome-button/dist/styles.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./chooseScreen.css";
-
+import  App from "../App";
 import { header_array } from "../crosswordData";
 
-let chooseNumber = 0;
+import {
+  faReply,
+  faVolumeDown,
+  faVolumeMute,
+  faVolumeOff,
+  faVolumeUp,
+} from "@fortawesome/free-solid-svg-icons";
 
-function ChooseScreen() {
+
+function ChooseScreen( { setScreenState, setPuzzleId}) {
+
+  const choosePuzzle = ( event, id) => {
+    setPuzzleId( id);
+    setScreenState( "PUZZLE_SCREEN");
+  }
+
+  const goBack = () => {
+    setScreenState( "START_SCREEN");
+    
+  }
+  
   return (
-    <div className="div_main_start_screen">
-      <div className="div_main_button_set">
-        <table>
-          <tr>
-            <td className="mainButtons">
-              <AwesomeButtonProgress
-                size="large"
-                type="secondary"
-                fakePress="true"
-                loadingLabel="Loading..."
-              >
-                <FontAwesomeIcon />
-                {header_array[0]}
-              </AwesomeButtonProgress>
-            </td>
-          </tr>
-          <tr>
-            <td className="mainButtons">
-              <AwesomeButtonProgress
-                size="large"
-                type="secondary"
-                fakePress="true"
-                loadingLabel="Loading..."
-              >
-                <FontAwesomeIcon />
-                {header_array[1]}
-              </AwesomeButtonProgress>
-            </td>
-          </tr>
-          <tr>
-            <td className="mainButtons">
-              <AwesomeButtonProgress
-                size="large"
-                type="secondary"
-                fakePress="true"
-                loadingLabel="Loading..."
-              >
-                <FontAwesomeIcon/>
-                {header_array[2]}
-              </AwesomeButtonProgress>
-            </td>
-          </tr>
-          <tr>
-            <td className="mainButtons">
-              <AwesomeButtonProgress
-                size="large"
-                type="secondary"
-                fakePress="true"
-                loadingLabel="Loading..."
-              >
-                <FontAwesomeIcon/>
-                {header_array[3]}
-              </AwesomeButtonProgress>
-            </td>
-          </tr>
-        </table>
+      
+      <div className="div_main_start_screen">
+        <div className="div_main_button_set">
+
+            <AwesomeButton size="icon" ripple type="primary" onPress={ goBack}>
+              <FontAwesomeIcon icon={ faReply} />
+            </AwesomeButton>
+
+            <table>
+              { header_array.map( puzzle => (
+
+                <tr>
+                  <td className="mainButtons">
+                    <AwesomeButton
+                      key={ puzzle.key}
+                      size="large"
+                      type="secondary"
+                      onPress={e =>  choosePuzzle( e, puzzle.key)}
+                    >
+                        { puzzle.name}
+                    </AwesomeButton>
+                  </td>
+                </tr>
+
+              ))}
+
+            </table>
       </div>
     </div>
+                      
   );
 }
 

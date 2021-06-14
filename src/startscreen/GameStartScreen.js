@@ -19,36 +19,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import App from "../App";
-import ChooseScreen from "../choosePuzzleScreen/chooseScreen";
+
 import "./gamestartscreen.css";
 
-function GameStartScreen() {
-  const [soundOn, setSoundOn] = useState(true);
-  const [gameStart, setGameStart] = useState(false);
+function GameStartScreen( {setScreenState}) {
+  const [soundOn, setSoundOn] = useState( true);
+  
 
   const soundControl = (event) => {
-    if (soundOn) {
-      setSoundOn(false);
-    } else {
-      setSoundOn(true);
-    }
+   setSoundOn( !soundOn);
   };
 
   const startGame = (event) => {
-    if (gameStart) {
-      setGameStart(false);
-    } else {
-      setGameStart(true);
-    }
+   setScreenState( "CHOOSE_SCREEN");
   };
 
   const quitGame = () => {};
 
   return (
     <>
-      {gameStart ? (
-        <ChooseScreen />
-      ) : (
         <div className="div_main_start_screen">
           <div className="div_util_button_set">
             <AwesomeButton
@@ -76,7 +65,8 @@ function GameStartScreen() {
                   <img
                     className="crosswordLogo"
                     src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShKLM389KHNOwgyQk9ttreG_7Fidhbbc_IQA&usqp=CAU"
-                  />
+                    alt=""
+                    />
                 </td>
               </tr>
               <tr>
@@ -111,6 +101,7 @@ function GameStartScreen() {
                   <img
                     className="sparkLogo"
                     src="https://avatars.githubusercontent.com/u/85065925?s=200&v=4"
+                    alt=""
                   />
                 </td>
                 <td className="tag_line">Spark Academy Sri Lanka</td>
@@ -132,7 +123,6 @@ function GameStartScreen() {
             </table>
           </div>
         </div>
-      )}
     </>
   );
 }
