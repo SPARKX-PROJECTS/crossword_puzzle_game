@@ -1,28 +1,30 @@
-import React, { useCallback, useRef, useState, useEffect } from "react";
-import Crossword from "./Crossword";
-import styled from "styled-components";
+import React, { useCallback, useRef, useState, useEffect } from 'react';
+import Crossword from './Crossword';
+import styled from 'styled-components';
 
-import "./App.css";
+import './App.css';
 
-import { puzzleDataStore } from "./crosswordData";
+import { puzzleDataStore } from './crosswordData';
 
-import { AwesomeButton } from "react-awesome-button";
-import "react-awesome-button/dist/styles.css";
+import { AwesomeButton } from 'react-awesome-button';
+import 'react-awesome-button/dist/styles.css';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faReply,
   faVolumeDown,
   faVolumeMute,
   faVolumeOff,
   faVolumeUp,
-} from "@fortawesome/free-solid-svg-icons";
-import GameStartScreen from "./startscreen/GameStartScreen";
+} from '@fortawesome/free-solid-svg-icons';
+import GameStartScreen from './startscreen/GameStartScreen';
 
-let correctSound = new sound("http://localhost:3000/audio/correct.mp3");
-let resetSound = new sound("http://localhost:3000/audio/reset.wav");
-let focusSound = new sound("http://localhost:3000/audio/focus.wav");
-let allCorrectSounnd = new sound("http://localhost:3000/audio/complete.wav");
+import Sound from 'react-sound';
+
+let correctSound = new sound('http://localhost:3000/audio/correct.mp3');
+let resetSound = new sound('http://localhost:3000/audio/reset.wav');
+let focusSound = new sound('http://localhost:3000/audio/focus.wav');
+let allCorrectSounnd = new sound('http://localhost:3000/audio/complete.wav');
 
 const Page = styled.div`
   padding: 2em;
@@ -40,19 +42,17 @@ const CrosswordWrapper = styled.div`
   /* and some fun making use of the defined class names */
   .crossword.correct {
     rect {
-      stroke: rgb(0,0,0) !important;
     }
     svg > rect {
-      fill: rgb(0,0,0)!important;
+      fill: rgb(100, 200, 100, 0.2) !important;
     }
     text {
-      fill: rgb(0,0,0) !important;
-      fill: transparent !important;
+      fill: rgb(130, 130, 130) !important;
     }
   }
   .clue.correct {
     ::before {
-      content: "\u2713"; /* a.k.a. checkmark: ✓ */
+      content: '\u2713'; /* a.k.a. checkmark: ✓ */
       display: inline-block;
       text-decoration: none;
       color: rgb(100, 200, 100);
@@ -63,31 +63,24 @@ const CrosswordWrapper = styled.div`
   }
 `;
 
-const Messages = styled.pre`
-  background-color: rgb(230, 230, 230);
-  margin: 1em 0;
-  padding: 1em;
-`;
-
 function sound(src) {
-    this.sound = document.createElement("audio");
-    this.sound.src = src;
-    this.sound.setAttribute("preload", "auto");
-    this.sound.setAttribute("controls", "none");
-    this.sound.style.display = "none";
-    document.body.appendChild(this.sound);
-    this.play = function () {
-      this.sound.play();
-    };
-    this.stop = function () {
-      this.sound.pause();
-    };
-  }
-
+  this.sound = document.createElement('audio');
+  this.sound.src = src;
+  this.sound.setAttribute('preload', 'auto');
+  this.sound.setAttribute('controls', 'none');
+  this.sound.style.display = 'none';
+  document.body.appendChild(this.sound);
+  this.play = function () {
+    this.sound.play();
+  };
+  this.stop = function () {
+    this.sound.pause();
+  };
+}
 
 // in order to make this a more-comprehensive example, and to vet Crossword's
 // features, we actually implement a fair amount...
-function App({ puzzleId, setScreenState}) {
+function App({ puzzleId, setScreenState }) {
   const crossword = useRef();
 
   useEffect(() => {
@@ -101,6 +94,7 @@ function App({ puzzleId, setScreenState}) {
 
   const fillAllAnswers = useCallback((event) => {
     crossword.current.fillAllAnswers();
+    allCorrectSounnd.play();
   }, []);
 
   const reset = useCallback((event) => {
@@ -116,83 +110,68 @@ function App({ puzzleId, setScreenState}) {
   //   setMessages((m) => m.concat(`${message}\n`));
   // }, []);
 
- 
   // onCorrect is called with the direction, number, and the correct answer.
-  const onCorrect = useCallback(
-    ( direction, number, answer) => {
-      correctSound.play();  
-    },
-    []
-  );
+  const onCorrect = useCallback((direction, number, answer) => {
+    correctSound.play();
+  }, []);
 
   // onLoadedCorrect is called with an array of the already-correct answers,
   // each element itself is an array with the same values as in onCorrect: the
   // direction, number, and the correct answer.
-  const onLoadedCorrect = useCallback(
-    ( answers) => {
-    
-    },
-    []
-  );
+  const onLoadedCorrect = useCallback((answers) => {}, []);
 
   // onCrosswordCorrect is called with a truthy/falsy value.
-  const onCrosswordCorrect = useCallback(
-    ( isCorrect) => {
-      allCorrectSounnd.play();
-    },
-    []
-  );
+  const onCrosswordCorrect = useCallback((isCorrect) => {
+    //allCorrectSounnd.play();
+  }, []);
 
   // onCellChange is called with the row, column, and character.
-  const onCellChange = useCallback(
-    ( row, col, char) => {
-      
-    },
-    []
-  );
+  const onCellChange = useCallback((row, col, char) => {}, []);
 
   const goBack = () => {
-    setScreenState( "CHOOSE_SCREEN");  
+    setScreenState('CHOOSE_SCREEN');
   };
 
   return (
     <div class="content">
       <Page>
         <div className="div_game_category_title">
-
-          <AwesomeButton size="icon" ripple type="primary" onPress={ goBack}>
-            <FontAwesomeIcon icon={ faReply} />
+          <AwesomeButton size="icon" ripple type="primary" onPress={goBack}>
+            <FontAwesomeIcon icon={faReply} />
           </AwesomeButton>
 
           {/* <h3 className="game_category_title">CATEGORY : {header}</h3> */}
         </div>
 
         <div className="div_game_button_panel">
-
           <AwesomeButton ripple type="secondary" onPress={focus}>
-            Focus 
+            Focus
           </AwesomeButton>
 
           <AwesomeButton ripple type="secondary" onPress={reset}>
+            {/* <Sound
+              url="http://localhost:3000/audio/correct.mp3"
+              playStatus={Sound.status.PLAYING}
+            /> */}
             Reset
           </AwesomeButton>
 
           <AwesomeButton ripple type="secondary" onPress={fillAllAnswers}>
             Fill Answers
           </AwesomeButton>
-
         </div>
 
         <div>
           <CrosswordWrapper>
             <Crossword
-              data={ puzzleDataStore[puzzleId].data}
+              data={puzzleDataStore[puzzleId].data}
               theme={{
-                cellBackground: "transparent",
-                focusBackground: "transparent",
-                highlightBackground: "transparent",
+                numberColor: 'rgb(0,0,0)',
+                cellBackground: 'transparent',
+                focusBackground: 'transparent',
+                highlightBackground: 'transparent',
                 backgroundImage:
-                  "https://digitalsynopsis.com/wp-content/uploads/2017/03/beautiful-color-gradients-backgrounds-078-cochiti-lake.png",
+                  'https://digitalsynopsis.com/wp-content/uploads/2017/03/beautiful-color-gradients-backgrounds-078-cochiti-lake.png',
               }}
               ref={crossword}
               onCorrect={onCorrect}
@@ -200,12 +179,8 @@ function App({ puzzleId, setScreenState}) {
               onCrosswordCorrect={onCrosswordCorrect}
               onCellChange={onCellChange}
             />
-            {/* <Clue /> */}
           </CrosswordWrapper>
         </div>
-
-        {/* 
-        <Messages>{messages}</Messages> */}
       </Page>
     </div>
   );

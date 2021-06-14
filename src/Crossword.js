@@ -729,16 +729,6 @@ const Crossword = React.forwardRef(
 				>
 					<ThemeProvider theme={finalTheme}>
 
-						{/* <div
-							style={{
-								overflowY: "scroll",
-								overflowX: "scroll",
-								width: "65vw",
-								height: "35vw",
-								padding: "20px",
-							}}
-						> */}
-
             {/*changed the div scrolling to a smooth viewport by adding a third party library 
             - react-zoom-pan-pinch - // check npm for more info */}
 
