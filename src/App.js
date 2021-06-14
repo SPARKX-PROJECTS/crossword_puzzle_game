@@ -45,13 +45,13 @@ const CrosswordWrapper = styled.div`
   /* and some fun making use of the defined class names */
   .crossword.correct {
     rect {
-      stroke: rgb(100, 200, 100) !important;
+      stroke: rgb(0, 0, 0) !important;
     }
     svg > rect {
-      fill: rgb(100, 200, 100) !important;
+      fill: transparent !important;
     }
     text {
-      fill: rgb(100, 200, 100) !important;
+      fill: rgb(0, 0, 0) !important;
     }
   }
   .clue.correct {
@@ -151,8 +151,10 @@ function App({ setGameStart }) {
   const onCrosswordCorrect = useCallback(
     (isCorrect) => {
       addMessage(`onCrosswordCorrect: ${JSON.stringify(isCorrect)}`);
-      allCorrectSounnd.play();
+	  allCorrectSounnd.play();
+    
     },
+	
     [addMessage]
   );
 
