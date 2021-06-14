@@ -19,6 +19,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import App from "../App";
+import ChooseScreen from "../choosePuzzleScreen/chooseScreen";
 import "./gamestartscreen.css";
 
 function GameStartScreen() {
@@ -46,7 +47,7 @@ function GameStartScreen() {
   return (
     <>
       {gameStart ? (
-        <App setGameStart={startGame} />
+        <ChooseScreen />
       ) : (
         <div className="div_main_start_screen">
           <div className="div_util_button_set">
