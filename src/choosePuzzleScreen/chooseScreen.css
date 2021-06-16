@@ -28,9 +28,6 @@
   width: inherit;
 }
 
-.div_puzzle_card {
-  box-sizing: border-box;
-  width: 20vw;
+.div_puzzle_card { 
   margin: 1rem;
-  text-align: center;
 }
