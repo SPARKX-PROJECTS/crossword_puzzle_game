@@ -17,6 +17,7 @@ export default function Cell({ cellData, onClick, focus, highlight }) {
   const { cellSize, cellPadding, cellInner, cellHalf, fontSize } = useContext(
     CrosswordSizeContext
   );
+  
   const {
     gridBackground,
     cellBackground,
