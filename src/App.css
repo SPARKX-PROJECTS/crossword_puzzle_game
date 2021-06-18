@@ -1,56 +1,60 @@
 .content {
-  /* background-image: url("https://i.pinimg.com/474x/70/0c/d1/700cd12e1dfca871c90683ffe22154ca.jpg"); */
-  /* background-image: url("https://cdn.hipwallpaper.com/i/22/29/Qd0Alw.jpg"); */
-  padding-top: 0.7rem;
-  display: flex;
-  justify-content: center;
-  background-image: url('https://previews.123rf.com/images/lilu330/lilu3301612/lilu330161200073/68821802-beautiful-mountain-meadow-landscape-vector-cartoon-outdoor-illustration-sunny-day-background-for-gam.jpg');
-  /* background-image: url("https://www.teahub.io/photos/full/1-16878_night-sky-star-wallpaper-hd.jpg"); */
-  /* background-image: url("https://cdn.wallpapersafari.com/73/1/XjHiRy.jpg"); */
-  background-size: cover;
-  background-position: relative;
-  background-repeat: no-repeat;
+	/* background-image: url("https://i.pinimg.com/474x/70/0c/d1/700cd12e1dfca871c90683ffe22154ca.jpg"); */
+	/* background-image: url("https://cdn.hipwallpaper.com/i/22/29/Qd0Alw.jpg"); */
+	padding-top: 0.7rem;
+	display: flex;
+	justify-content: center;
+	/* background-image: url("https://previews.123rf.com/images/lilu330/lilu3301612/lilu330161200073/68821802-beautiful-mountain-meadow-landscape-vector-cartoon-outdoor-illustration-sunny-day-background-for-gam.jpg"); */
+	/* background-image: url("https://www.teahub.io/photos/full/1-16878_night-sky-star-wallpaper-hd.jpg"); */
+	/* background-image: url("https://cdn.wallpapersafari.com/73/1/XjHiRy.jpg"); */
+
+	background-image: url("https://i.gifer.com/4J5B.gif");
+	background-color: aqua;
+
+	/* background-size: auto; */
+	background-position: relative;
+	background-repeat: repeat;
 }
 
 .aws-btn {
-  --button-default-height: 48px;
-  --button-default-font-size: 14px;
-  --button-default-border-radius: 6px;
-  --button-horizontal-padding: 20px;
-  --button-raise-level: 5px;
-  --button-hover-pressure: 2;
-  --transform-speed: 0.185s;
-  --button-primary-color: #475472;
-  --button-primary-color-dark: #2a3143;
-  --button-primary-color-light: #d4d9e4;
-  --button-primary-color-hover: #424e6a;
-  --button-primary-border: none;
-  --button-secondary-color: #fffc6c;
-  --button-secondary-color-dark: #b9b500;
-  --button-secondary-color-light: #6c6a00;
-  --button-secondary-color-hover: #fffb3e;
-  --button-secondary-border: none;
-  --button-anchor-color: #f3c8ad;
-  --button-anchor-color-dark: #734922;
-  --button-anchor-color-light: #4c3016;
-  --button-anchor-color-hover: #f1bfa0;
-  --button-anchor-border: 1px solid #8c633c;
+	--button-default-height: 48px;
+	--button-default-font-size: 14px;
+	--button-default-border-radius: 6px;
+	--button-horizontal-padding: 20px;
+	--button-raise-level: 5px;
+	--button-hover-pressure: 2;
+	--transform-speed: 0.185s;
+	--button-primary-color: #475472;
+	--button-primary-color-dark: #2a3143;
+	--button-primary-color-light: #d4d9e4;
+	--button-primary-color-hover: #424e6a;
+	--button-primary-border: none;
+	--button-secondary-color: #fffc6c;
+	--button-secondary-color-dark: #b9b500;
+	--button-secondary-color-light: #6c6a00;
+	--button-secondary-color-hover: #fffb3e;
+	--button-secondary-border: none;
+	--button-anchor-color: #f3c8ad;
+	--button-anchor-color-dark: #734922;
+	--button-anchor-color-light: #4c3016;
+	--button-anchor-color-hover: #f1bfa0;
+	--button-anchor-border: 1px solid #8c633c;
 }
 
 .div_game_button_panel {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 0.5rem;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 0.5rem;
 }
 
 .div_game_category_title {
-  display: flex;
-  justify-content: space-between;
+	display: flex;
+	justify-content: space-between;
 }
 
 .game_category_title {
-  text-align: center;
-  margin-bottom: 1em;
-  text-transform: uppercase;
-  font-size: 0.7rem;
+	text-align: center;
+	margin-bottom: 1em;
+	text-transform: uppercase;
+	font-size: 0.7rem;
 }
