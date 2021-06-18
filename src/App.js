@@ -1,7 +1,6 @@
 import React, { useCallback, useRef, useState, useEffect } from "react";
 import Crossword from "./Crossword";
 import styled from "styled-components";
-import { PopupboxManager, PopupboxContainer } from "react-popupbox";
 import Popup from "./Popup/Popup";
 import "./App.css";
 
@@ -11,16 +10,9 @@ import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-	faReply,
-	faVolumeDown,
-	faVolumeMute,
-	faVolumeOff,
-	faVolumeUp,
-} from "@fortawesome/free-solid-svg-icons";
-import GameStartScreen from "./startscreen/GameStartScreen";
+import { faReply } from "@fortawesome/free-solid-svg-icons";
 
-import Sound from "react-sound";
+//import Sound from "react-sound";
 
 let correctSound = new sound("http://localhost:3000/audio/correct.mp3");
 let resetSound = new sound("http://localhost:3000/audio/reset.wav");
@@ -49,7 +41,8 @@ const CrosswordWrapper = styled.div`
 		}
 		text {
 			fill: rgb(130, 130, 130) !important;
-		}
+		}import { clearGuesses } from './util';
+
 	}
 	.clue.correct {
 		::before {
@@ -83,7 +76,8 @@ function sound(src) {
 // features, we actually implement a fair amount...
 function App({ puzzleId, setScreenState, setSoundOn, soundOn }) {
 	const crossword = useRef();
-	// const [isOpen, setIsOpen] = useState(false);
+	const [isPopUpOpen, setIsPopUpOpen] = useState(false);
+
 	useEffect(() => {
 		crossword.current.reset();
 	});
@@ -144,9 +138,11 @@ function App({ puzzleId, setScreenState, setSoundOn, soundOn }) {
 	// onCrosswordCorrect is called with a truthy/falsy value.
 	const onCrosswordCorrect = useCallback(
 		(isCorrect) => {
-			// setIsOpen(!isOpen);
-			if (!soundOn) {
-				allCorrectSounnd.play();
+			if (isCorrect) {
+				setIsPopUpOpen(true);
+				if (!soundOn) {
+					allCorrectSounnd.play();
+				}
 			}
 		},
 		[soundOn],
@@ -159,81 +155,99 @@ function App({ puzzleId, setScreenState, setSoundOn, soundOn }) {
 		setScreenState("CHOOSE_SCREEN");
 	};
 
-	// const togglePopup = () => {
-	// 	setIsOpen(false);
-	// };
+	const replay = () => {
+		setScreenState("PUZZLE_SCREEN");
+		setIsPopUpOpen(false);
+	};
+
+	const togglePopup = () => {
+		setIsPopUpOpen(!isPopUpOpen);
+	};
 
 	return (
-		<div class="content">
-			<Page>
-				<div className="div_game_category_title">
-					<AwesomeButton size="icon" ripple type="primary" onPress={goBack}>
-						<FontAwesomeIcon icon={faReply} />
-					</AwesomeButton>
+		<>
+			<div class="content">
+				<Page>
+					<div className="div_game_category_title">
+						<AwesomeButton size="icon" ripple type="primary" onPress={goBack}>
+							<FontAwesomeIcon icon={faReply} />
+						</AwesomeButton>
 
-					{/* <h3 className="game_category_title">CATEGORY : {header}</h3> */}
-				</div>
+						{/* <h3 className="game_category_title">CATEGORY : {header}</h3> */}
+					</div>
 
-				<div className="div_game_button_panel">
-					<AwesomeButton ripple type="secondary" onPress={focus}>
-						Focus
-					</AwesomeButton>
+					<div className="div_game_button_panel">
+						<AwesomeButton ripple type="secondary" onPress={focus}>
+							Focus
+						</AwesomeButton>
 
-					<AwesomeButton ripple type="secondary" onPress={reset}>
-						{/* <Sound
+						<AwesomeButton ripple type="secondary" onPress={reset}>
+							{/* <Sound
               url="http://localhost:3000/audio/correct.mp3"
               playStatus={Sound.status.PLAYING}
             /> */}
-						Reset
-					</AwesomeButton>
+							Reset
+						</AwesomeButton>
 
-					<AwesomeButton ripple type="secondary" onPress={fillAllAnswers}>
-						Fill Answers
-					</AwesomeButton>
-				</div>
+						<AwesomeButton ripple type="secondary" onPress={fillAllAnswers}>
+							Fill Answers
+						</AwesomeButton>
+					</div>
 
-				<div>
-					{/* {isOpen && (
-						<Popup
-							content={
-								<>
-									<b>Design your Popup</b>
-									<p>
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-										do eiusmod tempor incididunt ut labore et dolore magna
-										aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-										ullamco laboris nisi ut aliquip ex ea commodo consequat.
-										Duis aute irure dolor in reprehenderit in voluptate velit
-										esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-										occaecat cupidatat non proident, sunt in culpa qui officia
-										deserunt mollit anim id est laborum.
-									</p>
-								</>
-							}
-							handleClose={togglePopup}
-						/>
-					)} */}
-					<CrosswordWrapper>
-						<Crossword
-							data={puzzleDataStore[puzzleId].data}
-							theme={{
-								numberColor: "rgb(0,0,0)",
-								cellBackground: "transparent",
-								focusBackground: "transparent",
-								highlightBackground: "transparent",
-								backgroundImage:
-									"https://digitalsynopsis.com/wp-content/uploads/2017/03/beautiful-color-gradients-backgrounds-078-cochiti-lake.png",
-							}}
-							ref={crossword}
-							onCorrect={onCorrect}
-							onLoadedCorrect={onLoadedCorrect}
-							onCrosswordCorrect={onCrosswordCorrect}
-							onCellChange={onCellChange}
-						/>
-					</CrosswordWrapper>
-				</div>
-			</Page>
-		</div>
+					<div>
+						<CrosswordWrapper>
+							<Crossword
+								data={puzzleDataStore[puzzleId].data}
+								theme={{
+									numberColor: "rgb(0,0,0)",
+									cellBackground: "transparent",
+									focusBackground: "transparent",
+									highlightBackground: "rgb(45,125,250)",
+									backgroundImage:
+										"https://digitalsynopsis.com/wp-content/uploads/2017/03/beautiful-color-gradients-backgrounds-078-cochiti-lake.png",
+								}}
+								ref={crossword}
+								onCorrect={onCorrect}
+								onLoadedCorrect={onLoadedCorrect}
+								onCrosswordCorrect={onCrosswordCorrect}
+								onCellChange={onCellChange}
+							/>
+						</CrosswordWrapper>
+					</div>
+				</Page>
+			</div>
+			<div>
+				{isPopUpOpen && (
+					<Popup
+						content={
+							<>
+								{/* <h1 className="beautifulHeader">CONGRATULATIONS</h1> */}
+
+								<div className="div_game_popup_button">
+									<AwesomeButton
+										ripple
+										type="primary"
+										onPress={goBack}
+										size="medium"
+									>
+										New Puzzle
+									</AwesomeButton>
+									<AwesomeButton
+										ripple
+										type="primary"
+										onPress={replay}
+										size="medium"
+									>
+										Replay
+									</AwesomeButton>
+								</div>
+							</>
+						}
+						handleClose={togglePopup}
+					/>
+				)}
+			</div>
+		</>
 	);
 }
 

@@ -1,33 +1,20 @@
-import React, { useCallback, useContext, useState } from "react";
-// import PropTypes from "prop-types";
+import React from "react";
 
-import {
-	AwesomeButton,
-	AwesomeButtonProgress,
-	AwesomeButtonSocial,
-} from "react-awesome-button";
+import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "./chooseScreen.css";
-import App from "../App";
+
 import { puzzleDataStore } from "../crosswordData";
 
-import {
-	faReply,
-	faVolumeDown,
-	faVolumeMute,
-	faVolumeOff,
-	faVolumeUp,
-} from "@fortawesome/free-solid-svg-icons";
+import { faReply } from "@fortawesome/free-solid-svg-icons";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import { red, yellow } from "@material-ui/core/colors";
@@ -73,10 +60,6 @@ function ChooseScreen({ setScreenState, setPuzzleId }) {
 								}
 								title={puzzle.name}
 							/>
-
-							{/* <CardContent>
-                <Typography className={classes.title} color="textPrimary">{puzzle.name}</Typography>
-              </CardContent> */}
 
 							<CardActions>
 								<Button

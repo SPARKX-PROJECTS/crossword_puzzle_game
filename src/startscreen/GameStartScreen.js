@@ -1,5 +1,4 @@
-import React, { useCallback, useContext, useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 
 import {
 	AwesomeButton,
@@ -17,8 +16,6 @@ import {
 	faGamepad,
 	faExclamationCircle,
 } from "@fortawesome/free-solid-svg-icons";
-
-import App from "../App";
 
 import "./gamestartscreen.css";
 
