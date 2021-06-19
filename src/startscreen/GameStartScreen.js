@@ -20,11 +20,8 @@ import {
 import "./gamestartscreen.css";
 
 function GameStartScreen(props) {
-	let soundOn = props.soundOn;
-
 	const soundControl = (event) => {
-		soundOn = !soundOn;
-		props.setSoundOn(soundOn);
+		props.setSoundOn(!props.soundOn);
 	};
 
 	const startGame = () => {
@@ -37,21 +34,21 @@ function GameStartScreen(props) {
 		<>
 			<div className="div_main_start_screen">
 				<div className="div_util_button_set">
+					<AwesomeButton size="icon" type="primary">
+						<FontAwesomeIcon icon={faScrewdriver} />
+					</AwesomeButton>
+
 					<AwesomeButton
 						size="icon"
 						ripple
 						type="primary"
 						onPress={soundControl}
 					>
-						{soundOn ? (
+						{props.soundOn ? (
 							<FontAwesomeIcon icon={faVolumeMute} />
 						) : (
 							<FontAwesomeIcon icon={faVolumeUp} />
 						)}
-					</AwesomeButton>
-
-					<AwesomeButton size="icon" type="primary">
-						<FontAwesomeIcon icon={faScrewdriver} />
 					</AwesomeButton>
 				</div>
 

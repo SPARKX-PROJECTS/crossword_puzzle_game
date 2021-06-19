@@ -9,7 +9,11 @@ import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faReply } from "@fortawesome/free-solid-svg-icons";
+import {
+	faReply,
+	faVolumeUp,
+	faVolumeMute,
+} from "@fortawesome/free-solid-svg-icons";
 
 //modal for popup
 import { makeStyles } from "@material-ui/core/styles";
@@ -85,7 +89,7 @@ function sound(src) {
 
 // in order to make this a more-comprehensive example, and to vet Crossword's
 // features, we actually implement a fair amount...
-function App({ puzzleId, setScreenState, setSoundOn, soundOn, setPuzzleId }) {
+function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
 	const crossword = useRef();
 	const [popupOpen, setPopupOpen] = useState(false);
 	const [fillAllClicked, setFillAllClicked] = useState(false);
@@ -98,6 +102,10 @@ function App({ puzzleId, setScreenState, setSoundOn, soundOn, setPuzzleId }) {
 			justifyContent: "center",
 		},
 	}));
+
+	const soundControl = (event) => {
+		setSoundOn(!soundOn);
+	};
 
 	const classes = useStyles();
 
@@ -128,8 +136,7 @@ function App({ puzzleId, setScreenState, setSoundOn, soundOn, setPuzzleId }) {
 
 	const reset = useCallback(
 		(event) => {
-			//crossword.current.reset();
-			//setFillAllClicked(false);
+			crossword.current.reset();
 			if (!soundOn) {
 				resetSound.play();
 			}
@@ -259,6 +266,18 @@ function App({ puzzleId, setScreenState, setSoundOn, soundOn, setPuzzleId }) {
 							<FontAwesomeIcon icon={faReply} />
 						</AwesomeButton>
 
+						<AwesomeButton
+							size="icon"
+							ripple
+							type="primary"
+							onPress={soundControl}
+						>
+							{soundOn ? (
+								<FontAwesomeIcon icon={faVolumeMute} />
+							) : (
+								<FontAwesomeIcon icon={faVolumeUp} />
+							)}
+						</AwesomeButton>
 						{/* <h3 className="game_category_title">CATEGORY : {header}</h3> */}
 					</div>
 
