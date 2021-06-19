@@ -17,10 +17,18 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 
-let correctSound = new sound("../src/static/audio/correct.mp3");
-let resetSound = new sound("../src/static/audio/reset.wav");
-let focusSound = new sound("../src/static/audio/focus.wav");
-let allCorrectSounnd = new sound("../src/static/audio/complete.wav");
+let correctSound = new sound(
+	"https://crossword-dpfiyymcf-sparkx-projects.vercel.app/audio/correct.mp3",
+);
+let resetSound = new sound(
+	"https://crossword-dpfiyymcf-sparkx-projects.vercel.app/audio/reset.wav",
+);
+let focusSound = new sound(
+	"https://crossword-dpfiyymcf-sparkx-projects.vercel.app/audio/focus.wav",
+);
+let allCorrectSounnd = new sound(
+	"https://crossword-dpfiyymcf-sparkx-projects.vercel.app/audio/complete.wav",
+);
 
 const Page = styled.div`
 	padding: 2em;
