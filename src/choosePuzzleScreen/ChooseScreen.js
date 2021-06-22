@@ -13,6 +13,7 @@ import {
 	faReply,
 	faVolumeUp,
 	faVolumeMute,
+	faAlignCenter,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,11 +23,13 @@ import Button from "@material-ui/core/Button";
 import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
 import { blue, red } from "@material-ui/core/colors";
+import { CenterFocusStrong } from "@material-ui/icons";
 
 const useStyles = makeStyles({
 	root: {
 		width: 250,
-		backgroundColor: blue[300],
+		backgroundColor: blue[200],
+		textAlign: "center",
 	},
 	title: {
 		fontSize: 14,
@@ -80,13 +83,13 @@ function ChooseScreen({ setScreenState, setPuzzleId, setSoundOn, soundOn }) {
 							/>
 
 							<CardActions>
-								<Button
-									size="small"
-									color="primary"
+								<button
+									className="card-button"
+									// size="small"
 									onClick={(e) => choosePuzzle(e, puzzle.key)}
 								>
 									START
-								</Button>
+								</button>
 							</CardActions>
 						</Card>
 					</div>
