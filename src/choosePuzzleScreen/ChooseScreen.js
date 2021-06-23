@@ -30,6 +30,7 @@ const useStyles = makeStyles({
     width: 250,
     backgroundColor: blue[200],
     textAlign: 'center',
+    cursor: 'pointer',
   },
   title: {
     fontSize: 14,
@@ -74,23 +75,16 @@ function ChooseScreen({ setScreenState, setPuzzleId, setSoundOn, soundOn }) {
       <div>
         {puzzleDataStore.map((puzzle) => (
           <div className="div_puzzle_card">
-            <Card className={classes.root}>
+            <Card
+              className={classes.root}
+              onClick={(e) => choosePuzzle(e, puzzle.key)}
+            >
               <CardHeader
                 avatar={
                   <Avatar className={classes.avatar}>{puzzle.key + 1}</Avatar>
                 }
                 title={puzzle.name}
               />
-
-              <CardActions>
-                <button
-                  className="card-button"
-                  // size="small"
-                  onClick={(e) => choosePuzzle(e, puzzle.key)}
-                >
-                  START
-                </button>
-              </CardActions>
             </Card>
           </div>
         ))}
