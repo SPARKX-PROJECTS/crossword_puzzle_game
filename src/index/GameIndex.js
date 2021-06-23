@@ -3,6 +3,8 @@ import ChooseScreen from '../choosePuzzleScreen/ChooseScreen';
 import GameStartScreen from '../startscreen/GameStartScreen';
 import App from '../App';
 
+import { motion, AnimatePresence } from 'framer-motion';
+
 function GameIndex() {
   const [screenState, setScreenState] = useState('START_SCREEN');
   const [puzzleId, setPuzzleId] = useState(0);
