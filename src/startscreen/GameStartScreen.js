@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { backHandler } from 'react';
 
 import {
   AwesomeButton,
@@ -73,22 +73,19 @@ function GameStartScreen(props) {
             <tr>
               <td className="mainButtons">
                 <AwesomeButtonProgress
-                  size="large"
                   type="secondary"
                   onPress={startGame}
                   fakePress="true"
                   loadingLabel="Loading..."
                 >
-                  <FontAwesomeIcon icon={faGamepad} />
-                  PLAY
+                  <h1>PLAY</h1>
                 </AwesomeButtonProgress>
               </td>
             </tr>
             <tr>
-              <td>
-                <AwesomeButton size="large" type="primary" onPress={quitGame}>
-                  <FontAwesomeIcon icon={faExclamationCircle} />
-                  QUIT
+              <td className="mainButtons">
+                <AwesomeButton type="primary" onPress={quitGame}>
+                  <h1>QUIT</h1>
                 </AwesomeButton>
               </td>
             </tr>

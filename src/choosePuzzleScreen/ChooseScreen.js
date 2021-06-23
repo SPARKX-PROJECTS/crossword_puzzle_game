@@ -41,6 +41,38 @@ const useStyles = makeStyles({
   },
 });
 
+const boxVariants = {
+  out: {
+    y: 600,
+  },
+
+  in: {
+    y: 0,
+
+    transition: {
+      duration: 0.2,
+
+      // The first child will appear AFTER the parrent has appeared on the screen
+
+      delayChildren: 0.4,
+
+      // The next sibling will appear 0.5s after the previous one
+
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const iconVariants = {
+  out: {
+    x: -600,
+  },
+
+  in: {
+    x: 0,
+  },
+};
+
 function ChooseScreen({ setScreenState, setPuzzleId, setSoundOn, soundOn }) {
   const choosePuzzle = (event, id) => {
     setPuzzleId(id);
@@ -78,9 +110,9 @@ function ChooseScreen({ setScreenState, setPuzzleId, setSoundOn, soundOn }) {
         </AwesomeButton>
       </div>
 
-      <div>
+      <motion.div variants={boxVariants} initial="out" animate="in">
         {puzzleDataStore.map((puzzle) => (
-          <div className="div_puzzle_card">
+          <motion.div className="div_puzzle_card" variants={iconVariants}>
             <Card
               className={classes.root}
               onClick={(e) => choosePuzzle(e, puzzle.key)}
@@ -92,9 +124,9 @@ function ChooseScreen({ setScreenState, setPuzzleId, setSoundOn, soundOn }) {
                 title={puzzle.name}
               />
             </Card>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
