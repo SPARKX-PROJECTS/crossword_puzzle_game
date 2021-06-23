@@ -24,7 +24,7 @@ function GameIndex() {
   } else if (screenState === 'CHOOSE_SCREEN') {
     //setScreenState( "START_SCREEN");
     return (
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <ChooseScreen
           setScreenState={setScreenState}
           setPuzzleId={setPuzzleId}
@@ -36,7 +36,7 @@ function GameIndex() {
   } else if (screenState === 'PUZZLE_SCREEN') {
     //setScreenState( "CHOOSE_SCREEN");
     return (
-      <AnimatePresence>
+      <AnimatePresence exitBeforeEnter>
         <App
           setScreenState={setScreenState}
           puzzleId={puzzleId}
