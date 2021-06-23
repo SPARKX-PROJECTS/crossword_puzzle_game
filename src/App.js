@@ -21,6 +21,7 @@ import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Timer from 'react-stopwatch';
+import { motion } from 'framer-motion';
 
 let correctSound = new sound(
   'https://crossword-dpfiyymcf-sparkx-projects.vercel.app/audio/correct.mp3'
@@ -217,7 +218,12 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
 
   return (
     <>
-      <div class="content">
+      <motion.div
+        class="content"
+        initial={{ opacity: 0.5 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0.5 }}
+      >
         <Page>
           <Modal
             aria-labelledby="transition-modal-title"
@@ -331,7 +337,7 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
             </CrosswordWrapper>
           </div>
         </Page>
-      </div>
+      </motion.div>
     </>
   );
 }

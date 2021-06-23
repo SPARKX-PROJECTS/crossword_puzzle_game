@@ -24,6 +24,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import { blue, red } from '@material-ui/core/colors';
 import { CenterFocusStrong } from '@material-ui/icons';
+import { motion } from 'framer-motion';
 
 const useStyles = makeStyles({
   root: {
@@ -57,7 +58,12 @@ function ChooseScreen({ setScreenState, setPuzzleId, setSoundOn, soundOn }) {
   const classes = useStyles();
 
   return (
-    <div className="div_main_choose_screen">
+    <motion.div
+      className="div_main_choose_screen"
+      initial={{ opacity: 0.5 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0.5 }}
+    >
       <div className="div_util_button_set">
         <AwesomeButton size="icon" ripple type="primary" onPress={goBack}>
           <FontAwesomeIcon icon={faReply} />
@@ -89,7 +95,7 @@ function ChooseScreen({ setScreenState, setPuzzleId, setSoundOn, soundOn }) {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
