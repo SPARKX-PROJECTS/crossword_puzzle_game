@@ -20,6 +20,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import Timer from 'react-stopwatch';
 
 let correctSound = new sound(
   'https://crossword-dpfiyymcf-sparkx-projects.vercel.app/audio/correct.mp3'
@@ -93,6 +94,9 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
   const crossword = useRef();
   const [popupOpen, setPopupOpen] = useState(false);
   const [fillAllClicked, setFillAllClicked] = useState(false);
+  const [second, setSeconds] = useState(0);
+  const [minute, setMinutes] = useState(0);
+  const [hour, setHours] = useState(0);
 
   //this style class is for the modal
   const useStyles = makeStyles((theme) => ({
@@ -137,6 +141,9 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
   const reset = useCallback(
     (event) => {
       crossword.current.reset();
+      setSeconds(0);
+      setMinutes(0);
+      setHours(0);
       if (!soundOn) {
         resetSound.play();
       }
@@ -265,6 +272,10 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
             <AwesomeButton size="icon" ripple type="primary" onPress={goBack}>
               <FontAwesomeIcon icon={faReply} />
             </AwesomeButton>
+
+            <Timer seconds={second} minutes={minute} hours={hour}>
+              {({ formatted }) => <div className="timer"> {formatted} </div>}
+            </Timer>
 
             <AwesomeButton
               size="icon"

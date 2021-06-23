@@ -13,6 +13,7 @@ import {
   faReply,
   faVolumeUp,
   faVolumeMute,
+  faAlignCenter,
 } from '@fortawesome/free-solid-svg-icons';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -22,13 +23,13 @@ import Button from '@material-ui/core/Button';
 import CardHeader from '@material-ui/core/CardHeader';
 import Avatar from '@material-ui/core/Avatar';
 import { blue, red } from '@material-ui/core/colors';
-
-import { motion } from 'framer-motion';
+import { CenterFocusStrong } from '@material-ui/icons';
 
 const useStyles = makeStyles({
   root: {
     width: 250,
-    backgroundColor: blue[300],
+    backgroundColor: blue[200],
+    textAlign: 'center',
   },
   title: {
     fontSize: 14,
@@ -73,25 +74,24 @@ function ChooseScreen({ setScreenState, setPuzzleId, setSoundOn, soundOn }) {
       <div>
         {puzzleDataStore.map((puzzle) => (
           <div className="div_puzzle_card">
-            <motion.div
-              animate={{ scale: 1.05 }}
-              transition={{ duration: 0.2 }}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Card
-                className={classes.root}
-                onClick={(e) => choosePuzzle(e, puzzle.key)}
-              >
-                <CardHeader
-                  className="puzzle_card_header"
-                  avatar={
-                    <Avatar className={classes.avatar}>{puzzle.key + 1}</Avatar>
-                  }
-                  title={puzzle.name}
-                />
-              </Card>
-            </motion.div>
+            <Card className={classes.root}>
+              <CardHeader
+                avatar={
+                  <Avatar className={classes.avatar}>{puzzle.key + 1}</Avatar>
+                }
+                title={puzzle.name}
+              />
+
+              <CardActions>
+                <button
+                  className="card-button"
+                  // size="small"
+                  onClick={(e) => choosePuzzle(e, puzzle.key)}
+                >
+                  START
+                </button>
+              </CardActions>
+            </Card>
           </div>
         ))}
       </div>
