@@ -298,8 +298,8 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
               ) : (
                 <FontAwesomeIcon icon={faVolumeUp} />
               )}
-            </AwesomeButton>{' '}
-            */
+            </AwesomeButton>
+
             {/* <h3 className="game_category_title">CATEGORY : {header}</h3> */}
           </div>
 

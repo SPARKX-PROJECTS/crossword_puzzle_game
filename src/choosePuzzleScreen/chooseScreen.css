@@ -34,6 +34,7 @@
 
 .div_puzzle_card {
   margin: 1rem;
+  font-family: 'Roboto Mono';
 }
 
 @media only screen and (min-width: 768px) {

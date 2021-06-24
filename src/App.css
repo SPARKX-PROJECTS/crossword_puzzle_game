@@ -77,10 +77,10 @@
 }
 .puzzle_clues_div {
   margin: auto;
-  background-color: rgba(255, 255, 255, 0.55);
+
   backdrop-filter: blur(10px);
   margin-top: 0.7rem;
-  font-family: Roboto Mono;
+  font-family: 'Roboto Mono';
   padding-left: 3rem;
 }
 
@@ -110,8 +110,7 @@
     overflow: auto;
     height: 70vh;
     margin: auto;
-    background-color: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(10px);
+    margin-left: 2rem;
     margin-top: 0.7rem;
     font-family: Roboto Mono;
     padding-left: 10rem;
