@@ -284,11 +284,9 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
             <AwesomeButton size="icon" ripple type="primary" onPress={goBack}>
               <FontAwesomeIcon icon={faReply} />
             </AwesomeButton>
-
             <Timer seconds={second} minutes={minute} hours={hour}>
               {({ formatted }) => <div className="timer"> {formatted} </div>}
             </Timer>
-
             <AwesomeButton
               size="icon"
               ripple
@@ -300,7 +298,8 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
               ) : (
                 <FontAwesomeIcon icon={faVolumeUp} />
               )}
-            </AwesomeButton>
+            </AwesomeButton>{' '}
+            */
             {/* <h3 className="game_category_title">CATEGORY : {header}</h3> */}
           </div>
 

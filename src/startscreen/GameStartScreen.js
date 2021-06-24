@@ -82,11 +82,13 @@ function GameStartScreen(props) {
           <table>
             <tr>
               <td>
-                <img
-                  className="sparkLogo"
-                  src="https://avatars.githubusercontent.com/u/85065925?s=200&v=4"
-                  alt=""
-                />
+                <a href="https://spark.lk" rel="noreferrer" target="_blank">
+                  <img
+                    className="sparkLogo"
+                    src="https://avatars.githubusercontent.com/u/85065925?s=200&v=4"
+                    alt=""
+                  />
+                </a>
               </td>
               <td className="tag_line">Spark Academy Sri Lanka</td>
               <td>
@@ -94,6 +96,8 @@ function GameStartScreen(props) {
                   className="socialMediaIcons"
                   size="small"
                   type="facebook"
+                  href="https://www.facebook.com/myspark.lk/"
+                  target="_blank"
                 />
               </td>
               <td>
@@ -101,6 +105,8 @@ function GameStartScreen(props) {
                   className="socialMediaIcons"
                   size="small"
                   type="instagram"
+                  href="https://instagram.com/myspark.lk?utm_medium=copy_link"
+                  target="_blank"
                 />
               </td>
             </tr>
