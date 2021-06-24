@@ -60,8 +60,10 @@ function GameStartScreen(props) {
             <tr>
               <td align="center">
                 <img
-                  src="https://crossword-dpfiyymcf-sparkx-projects.vercel.app/images/Banner 1200 x 627.jpg"
+                  src="/images/App Icon 1024 x1024.jpg"
                   alt="spark poson quiz"
+                  width="150"
+                  height="150"
                 />
               </td>
             </tr>
