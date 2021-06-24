@@ -249,7 +249,7 @@ let puzzleDataStore = [
   },
   {
     key: 3,
-    name: 'INAGURATION OF BUDDHISM IN SRI LANKA',
+    name: 'INAUGURATION OF BUDDHISM IN SRI LANKA',
     data: data_4,
     completed: false,
     time: '',
