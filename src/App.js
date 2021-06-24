@@ -22,6 +22,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
 import Timer from 'react-stopwatch';
 import { motion } from 'framer-motion';
+import Reward from 'react-rewards';
 
 let correctSound = new sound(
   'https://crossword-dpfiyymcf-sparkx-projects.vercel.app/audio/correct.mp3'
@@ -93,6 +94,7 @@ function sound(src) {
 // features, we actually implement a fair amount...
 function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
   const crossword = useRef();
+  const [reward, setReward] = useState();
   const [popupOpen, setPopupOpen] = useState(false);
   const [fillAllClicked, setFillAllClicked] = useState(false);
   const [second, setSeconds] = useState(0);
@@ -120,12 +122,16 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
 
   const focus = useCallback(
     (event) => {
+      if (reward) {
+        reward.rewardMe();
+      }
+      setPopupOpen(true);
       crossword.current.focus();
       if (!soundOn) {
         focusSound.play();
       }
     },
-    [soundOn]
+    [soundOn, reward]
   );
 
   const fillAllAnswers = useCallback(
@@ -180,6 +186,9 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
     (isCorrect) => {
       if (isCorrect) {
         if (!fillAllClicked) {
+          if (reward) {
+            reward.rewardMe();
+          }
           handleOpen();
         }
         //setIsPopUpOpen(true);
@@ -188,7 +197,7 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
         }
       }
     },
-    [soundOn, fillAllClicked]
+    [soundOn, fillAllClicked, reward]
   );
 
   // onCellChange is called with the row, column, and character.
@@ -218,8 +227,9 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
 
   return (
     <>
+      <Reward ref={(ref) => setReward(ref)} type="confetti"></Reward>
       <motion.div
-        class="content"
+        class="puzzlescreen_main_div"
         initial={{ opacity: 0.5 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0.5 }}
@@ -247,7 +257,7 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
                     onPress={goBack}
                     size="small"
                   >
-                    New Puzzle
+                    <h1>New</h1>
                   </AwesomeButton>
 
                   <AwesomeButton
@@ -257,7 +267,7 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
                     onPress={loadNextPuzzle}
                     size="small"
                   >
-                    Next puzzle
+                    <h1>Next</h1>
                   </AwesomeButton>
 
                   <AwesomeButton
@@ -267,7 +277,7 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
                     onPress={replay}
                     size="small"
                   >
-                    Replay
+                    <h1>Replay</h1>
                   </AwesomeButton>
                 </div>
               </div>
