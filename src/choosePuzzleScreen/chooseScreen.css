@@ -9,10 +9,12 @@
   align-items: center;
   box-sizing: border-box;
   min-height: 100vh;
-  padding: 2rem;
+  padding-top: 2rem;
   /* background-image: url('https://i.gifer.com/4J5B.gif');
   background-color: rgb(29, 137, 170); */
   background-repeat: repeat;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .div_util_button_set {
@@ -34,27 +36,8 @@
   margin: 1rem;
 }
 
-.card-button {
-  background-color: #5e94db;
-  color: black;
-  border: 2px solid #1b1e1f;
-  border-radius: 6px;
-  transition-duration: 0.4s;
-  height: 35px;
-  width: 70px;
-  box-shadow: 7px 6px 28px 1px rgba(22, 6, 94, 0.24);
-  cursor: pointer;
-  outline: none;
-  transition: 0.2s all;
-}
-
-.card-button:hover {
-  background-color: #1f5baa;
-}
-
-.card-button:active {
-  transform: scale(0.8);
-  /* Scaling button to 0.98 to its original size */
-  box-shadow: 3px 2px 22px 1px rgba(2, 19, 55, 0.24);
-  /* Lowering the shadow */
+@media only screen and (min-width: 768px) {
+  .div_puzzle_card {
+    padding-top: 2rem;
+  }
 }

@@ -731,107 +731,100 @@ const Crossword = React.forwardRef(
             <ThemeProvider theme={finalTheme}>
               {/*changed the div scrolling to a smooth viewport by adding a third party library 
             - react-zoom-pan-pinch - // check npm for more info */}
-              <div>
-                <TransformWrapper
-                  defaultScale={1.2}
-                  defaultPositionX={200}
-                  defaultPositionY={500}
-                  maxScale={1.4}
-                  minScale={1}
-                >
-                  <TransformComponent>
-                    <OuterWrapper correct={crosswordCorrect}>
-                      <GridWrapper>
-                        {/*
+              <div className="puzzle_clue_main_div">
+                <div className="puzzle_viewport_div">
+                  <TransformWrapper
+                    className="puzzle_viewport_transform_wrapper"
+                    initialScale={1}
+                    initialPositionX={200}
+                    initialPositionY={100}
+                    minScale={0.8}
+                    maxScale={1.2}
+                    limitToBounds={true}
+                    centerZoomedOut={true}
+                    centerOnInit={true}
+                  >
+                    <TransformComponent className="puzzle_viewport_transform_wrapper">
+                      <OuterWrapper correct={crosswordCorrect}>
+                        <GridWrapper>
+                          {/*
                 This div is hard-coded because we *need* a zero-padded,
                 relative-positioned element for aligning the <input> with the
                 cells in the <svg>.
               */}
-                        <div
-                          style={{
-                            margin: 0,
-                            padding: 0,
-                            position: 'relative',
-                          }}
-                        >
-                          <svg viewBox="0 0 100 100">
-                            <rect
-                              x={0}
-                              y={0}
-                              width={100}
-                              height={100}
-                              fill={finalTheme.gridBackground}
-                            />
-                            {cells}
-                          </svg>
-                          <input
-                            ref={inputRef}
-                            aria-label="crossword-input"
-                            type="text"
-                            onClick={handleInputClick}
-                            onKeyDown={handleInputKeyDown}
-                            onChange={handleInputChange}
-                            value=""
-                            // onInput={this.handleInput}
-                            autoComplete="off"
-                            spellCheck="false"
-                            autoCorrect="off"
+                          <div
                             style={{
-                              position: 'absolute',
-                              // In order to ensure the top/left positioning makes sense,
-                              // there is an absolutely-positioned <div> with no
-                              // margin/padding that we *don't* expose to consumers.  This
-                              // keeps the math much more reliable.  (But we're still
-                              // seeing a slight vertical deviation towards the bottom of
-                              // the grid!  The "* 0.995" seems to help.)
-                              top: `calc(${
-                                focusedRow * cellSize * 0.995
-                              }% + 2px)`,
-                              left: `calc(${focusedCol * cellSize}% + 2px)`,
-                              width: `calc(${cellSize}% - 4px)`,
-                              height: `calc(${cellSize}% - 4px)`,
-                              fontSize: `${fontSize * 6}px`, // waaay too small...?
-                              textAlign: 'center',
-                              textAnchor: 'middle',
-                              backgroundColor: 'transparent',
-                              caretColor: 'transparent',
                               margin: 0,
                               padding: 0,
-                              border: 0,
-                              cursor: 'default',
+                              position: 'relative',
                             }}
-                          />
-                        </div>
-                      </GridWrapper>
-                    </OuterWrapper>
-                  </TransformComponent>
-                </TransformWrapper>
-              </div>
-              {/* </div> */}
+                          >
+                            <svg viewBox="0 0 100 100">
+                              <rect
+                                x={0}
+                                y={0}
+                                width={100}
+                                height={100}
+                                fill={finalTheme.gridBackground}
+                              />
+                              {cells}
+                            </svg>
+                            <input
+                              ref={inputRef}
+                              aria-label="crossword-input"
+                              type="text"
+                              onClick={handleInputClick}
+                              onKeyDown={handleInputKeyDown}
+                              onChange={handleInputChange}
+                              value=""
+                              // onInput={this.handleInput}
+                              autoComplete="off"
+                              spellCheck="false"
+                              autoCorrect="off"
+                              style={{
+                                position: 'absolute',
+                                // In order to ensure the top/left positioning makes sense,
+                                // there is an absolutely-positioned <div> with no
+                                // margin/padding that we *don't* expose to consumers.  This
+                                // keeps the math much more reliable.  (But we're still
+                                // seeing a slight vertical deviation towards the bottom of
+                                // the grid!  The "* 0.995" seems to help.)
+                                top: `calc(${
+                                  focusedRow * cellSize * 0.995
+                                }% + 2px)`,
+                                left: `calc(${focusedCol * cellSize}% + 2px)`,
+                                width: `calc(${cellSize}% - 4px)`,
+                                height: `calc(${cellSize}% - 4px)`,
+                                fontSize: `${fontSize * 6}px`, // waaay too small...?
+                                textAlign: 'center',
+                                textAnchor: 'middle',
+                                backgroundColor: 'transparent',
+                                caretColor: 'transparent',
+                                margin: 0,
+                                padding: 0,
+                                border: 0,
+                                cursor: 'default',
+                              }}
+                            />
+                          </div>
+                        </GridWrapper>
+                      </OuterWrapper>
+                    </TransformComponent>
+                  </TransformWrapper>
+                </div>
 
-              <div
-                style={{
-                  overflow: 'auto',
-                  height: '40vh',
-                  padding: '20px',
-                  color: 'black',
-                  margin: 'auto',
-                  backgroundColor: 'rgba(255, 255, 255, .55)',
-                  backgroundFilter: 'blur(10px)',
-                  marginTop: '0.7rem',
-                  fontFamily: 'Roboto Mono',
-                }}
-              >
-                <CluesWrapper>
-                  {clues &&
-                    bothDirections.map((direction) => (
-                      <DirectionClues
-                        key={direction}
-                        direction={direction}
-                        clues={clues[direction]}
-                      />
-                    ))}
-                </CluesWrapper>
+                <div className="puzzle_clues_div">
+                  <CluesWrapper>
+                    {clues &&
+                      bothDirections.map((direction) => (
+                        <DirectionClues
+                          key={direction}
+                          direction={direction}
+                          clues={clues[direction]}
+                        />
+                      ))}
+                  </CluesWrapper>
+                </div>
               </div>
             </ThemeProvider>
           </CrosswordSizeContext.Provider>

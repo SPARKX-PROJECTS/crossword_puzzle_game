@@ -43,7 +43,7 @@ const useStyles = makeStyles({
 
 const boxVariants = {
   out: {
-    y: 600,
+    y: 0,
   },
 
   in: {
@@ -65,7 +65,7 @@ const boxVariants = {
 
 const iconVariants = {
   out: {
-    x: -600,
+    x: -800,
   },
 
   in: {

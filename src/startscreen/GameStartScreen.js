@@ -41,10 +41,6 @@ function GameStartScreen(props) {
         exit={{ opacity: 0.5 }}
       >
         <div className="div_util_button_set">
-          <AwesomeButton size="icon" type="primary">
-            <FontAwesomeIcon icon={faScrewdriver} />
-          </AwesomeButton>
-
           <AwesomeButton
             size="icon"
             ripple
@@ -63,15 +59,12 @@ function GameStartScreen(props) {
           <table>
             <tr>
               <td align="center">
-                <img
-                  className="crosswordLogo"
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShKLM389KHNOwgyQk9ttreG_7Fidhbbc_IQA&usqp=CAU"
-                  alt=""
-                />
+                <h1> CROSS WORD NAME AND LOGO ART WORK</h1>
               </td>
             </tr>
+
             <tr>
-              <td className="mainButtons">
+              <td className="mainButtons" align="center">
                 <AwesomeButtonProgress
                   type="secondary"
                   onPress={startGame}
@@ -80,13 +73,6 @@ function GameStartScreen(props) {
                 >
                   <h1>PLAY</h1>
                 </AwesomeButtonProgress>
-              </td>
-            </tr>
-            <tr>
-              <td className="mainButtons">
-                <AwesomeButton type="primary" onPress={quitGame}>
-                  <h1>QUIT</h1>
-                </AwesomeButton>
               </td>
             </tr>
           </table>

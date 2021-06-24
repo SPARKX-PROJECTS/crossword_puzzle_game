@@ -122,16 +122,12 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
 
   const focus = useCallback(
     (event) => {
-      if (reward) {
-        reward.rewardMe();
-      }
-      setPopupOpen(true);
       crossword.current.focus();
       if (!soundOn) {
         focusSound.play();
       }
     },
-    [soundOn, reward]
+    [soundOn]
   );
 
   const fillAllAnswers = useCallback(
