@@ -143,10 +143,10 @@ function App({ puzzleId, setScreenState, setPuzzleId, setSoundOn, soundOn }) {
 
 	const reset = useCallback(
 		(event) => {
-			crossword.current.reset();
 			setSeconds(0);
 			setMinutes(0);
 			setHours(0);
+			crossword.current.reset();
 			if (!soundOn) {
 				resetSound.play();
 			}
